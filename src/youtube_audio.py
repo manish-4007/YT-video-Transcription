@@ -2,14 +2,18 @@ from pytube import YouTube
 import speech_recognition as sr 
 import os 
 from pydub import AudioSegment
+from pydub.utils import which
 from pydub.silence import split_on_silence
 from pydub.silence import detect_nonsilent
-import time,tempfile
+import time,tempfile,which
 from googletrans import Translator
 import streamlit as st
 
-AudioSegment.ffmpeg = "/usr/bin/ffmpeg"
-AudioSegment.converter = '/usr/bin/ffprobe'
+@st.cache_resource
+def set_ffmpeg():
+    AudioSegment.ffmpeg = "/usr/bin/ffmpeg"
+    AudioSegment.converter = which("ffmpeg")
+
 start= time.time()
 
 directory = tempfile.gettempdir() 

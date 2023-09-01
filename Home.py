@@ -4,6 +4,7 @@ from streamlit_extras.streaming_write import write
 from streamlit_extras.grid import grid
 from streamlit_extras.colored_header import colored_header
 import os,time,subprocess,sys
+from src.youtube_audio import set_ffmpeg
 
 @st.cache_resource
 def load_spacy():
@@ -163,6 +164,7 @@ if "dependencies" not in st.session_state:
     st.session_state.dependencies = True 
     try:
         load_spacy()
+        set_ffmpeg()
         # intall_ffmpeg()
     except Exception as e:
         print('Error in Loading :', e)
