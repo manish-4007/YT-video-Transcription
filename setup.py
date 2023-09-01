@@ -87,7 +87,7 @@ setup(
     author= 'Manish',
     author_email="manish.rai709130@gmail.com",
     install_requires = get_requirements('requirements.txt'),
-    packages= find_packages(),
+    # packages= find_packages(),
 )
 
 print("Loading custom Dependencies from setup.py ")
