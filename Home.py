@@ -161,7 +161,7 @@ if "dependencies" not in st.session_state:
     st.session_state.dependencies = True 
     try:
         load_spacy()
-        # intall_ffmpeg()
+        intall_ffmpeg()
     except Exception as e:
         print('Error in Loading :', e)
         pass

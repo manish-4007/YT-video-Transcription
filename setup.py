@@ -88,6 +88,7 @@ setup(
     packages= find_packages(),
 )
 
+print("Loading custom Dependencies from setup.py ")
 load_spacy()
 install_img_magic_commands()
 intall_ffmpeg()
