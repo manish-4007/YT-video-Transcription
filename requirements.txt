@@ -5,7 +5,7 @@ google_api_python_client==2.97.0
 googletrans==3.1.0a0
 moviepy==2.0.0.dev2
 nltk==3.8.1
-numpy==1.24.4
+numpy
 openai_whisper==20230314
 pandas==2.0.3
 pydub==0.25.1
