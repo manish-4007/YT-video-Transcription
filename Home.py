@@ -30,8 +30,8 @@ def intall_ffmpeg():
         print("ffmpeg and ffprobe installed successfully.")
         
         virtual_env_path = "./venv"
-        lib_path = "/usr/bin/ffmpeg"
-        # lib_path = "/usr/local/bin/ffmpeg"
+        # lib_path = "/usr/bin/ffmpeg"
+        lib_path = "/usr/local/bin/ffmpeg"
         # lib_path = "/opt/ffmpeg/bin/ffmpeg"
 
         import pydub,ffmpeg 
