@@ -55,7 +55,7 @@ def install_img_magic_commands():
 
 
 
-load_spacy(),
+load_spacy()
 install_img_magic_commands()
 setup(
     name = "YoutubeTranscription",
