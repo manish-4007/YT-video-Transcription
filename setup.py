@@ -26,11 +26,32 @@ def load_spacy():
     # print(subprocess.run("pip install spacy".split(),check=True))
     # print(subprocess.run([sys.executable, "-m","pip", "install","--upgrade", "pip"], text=True))
     
-    print(subprocess.run([sys.executable, "-m", "spacy", "download", 'en_core_web_lg'], text=True))
+    print(subprocess.run([sys.executable, "-m", "spacy", "download", 'en_core_web_sm'], text=True))
 
 
     print("Loaded Sucessfully")
 
+def intall_ffmpeg():
+   
+    try:
+        print('Installing ffmpeg and ffprobe dependencies ............')
+        # # Run "apt install ffmpeg and ffprobe "
+        
+        print(subprocess.run([sys.executable, "pip", "install", "pydub"], text=True))
+        subprocess.run(["sudo", "apt-get", "install", "ffmpeg"], capture_output=True, text=True)
+        print("ffmpeg and ffprobe installed successfully.")
+        import pydub
+        
+        virtual_env_path = "./venv"
+        os.environ['PATH'] = f"{virtual_env_path}\\Scripts;{os.environ['PATH']}"
+        
+        pydub.AudioSegment.ffmpeg = f"{os.environ['PATH']}/ffmpeg"
+        pydub.AudioSegment.ffprobe = f"{os.environ['PATH']}/ffprobe"
+
+        print("ffmpeg and ffprobe setup done completely.")
+    except Exception as e:
+       print('Error :', e)
+       print('Installing Unsucessful.')
 
 def install_img_magic_commands():
    
@@ -65,3 +86,4 @@ setup(
 )
 load_spacy()
 install_img_magic_commands()
+intall_ffmpeg()
