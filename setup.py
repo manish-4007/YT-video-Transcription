@@ -55,8 +55,6 @@ def install_img_magic_commands():
 
 
 
-load_spacy()
-install_img_magic_commands()
 setup(
     name = "YoutubeTranscription",
     version= '0.0.1',
@@ -65,3 +63,5 @@ setup(
     install_requires = get_requirements('requirements.txt'),
     packages= find_packages(),
 )
+load_spacy()
+install_img_magic_commands()
