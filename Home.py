@@ -25,7 +25,7 @@ def intall_ffmpeg():
         print('Installing ffmpeg and ffprobe dependencies ............')
         # # Run "apt install ffmpeg and ffprobe "
         
-        # print(subprocess.run([sys.executable, "pip", "install", "pydub"], text=True))
+        print(subprocess.run([sys.executable, "pip", "install", "pydub"," ", "simpleaudio"], text=True))
         print(subprocess.run(["sudo", "apt", "install", "ffmpeg"], capture_output=True, text=True))
         print("ffmpeg and ffprobe installed successfully.")
         
