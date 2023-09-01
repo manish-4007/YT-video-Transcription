@@ -30,8 +30,35 @@ def load_spacy():
 
 
     print("Loaded Sucessfully")
-
+   
 def intall_ffmpeg():
+    try:
+        print('Installing ffmpeg and ffprobe dependencies ............')
+        # # Run "apt install ffmpeg and ffprobe "
+        
+        print(subprocess.run([sys.executable, "pip", "install", "pydub"," ", "simpleaudio"], text=True))
+        print(subprocess.run(["sudo", "apt", "install", "ffmpeg"], capture_output=True, text=True))
+        print("ffmpeg and ffprobe installed successfully.")
+        
+        virtual_env_path = "./venv"
+        lib_path = "/usr/bin/ffmpeg"
+        # lib_path = "/usr/local/bin/ffmpeg"
+        # lib_path = "/opt/ffmpeg/bin/ffmpeg"
+
+        import pydub,ffmpeg 
+        ffmpeg_binary = lib_path
+        # ffprobe_binary = f"{lib_path}/ffprobe.exe"
+        pydub.AudioSegment.ffmpeg = ffmpeg_binary
+        ffmpeg.input.ffmpeg = "/usr/bin/ffmpeg.exe"
+        pydub.AudioSegment.converter = '/usr/bin/ffprobe.exe'
+        # # ffmpeg.input.ffprobe = '/usr/bin/ffprobe'
+
+        print("ffmpeg and ffprobe setup done completely.")
+    except Exception as e:
+       print('Error :', e)
+       print('Installing Unsucessful.')
+
+
    
     print('Installing ffmpeg and ffprobe dependencies ............')
     try:
