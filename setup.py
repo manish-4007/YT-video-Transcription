@@ -42,11 +42,11 @@ def intall_ffmpeg():
         print("ffmpeg and ffprobe installed successfully.")
         
         virtual_env_path = "./venv"
-        os.environ['PATH'] = f"{virtual_env_path}\\Scripts;{os.environ['PATH']}"
+        lib_path = f"{virtual_env_path}/Scripts/Lib/site-packages"
 
         import pydub,ffmpeg 
-        ffmpeg_binary = f"{os.environ['PATH']}/ffmpeg"
-        ffprobe_binary = f"{os.environ['PATH']}/ffprobe"
+        ffmpeg_binary = f"{lib_path}/ffmpeg"
+        ffprobe_binary = f"{lib_path}/ffprobe"
         pydub.AudioSegment.ffmpeg = ffmpeg_binary
         pydub.AudioSegment.ffprobe = ffprobe_binary
         ffmpeg.input.ffmpeg = ffmpeg_binary
