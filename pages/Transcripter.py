@@ -564,6 +564,7 @@ except Exception as e:
     st.subheader("Some Error Occured😢, please select the video again😊")
     print("Error Occured: ",e)
     st.write(e)
+    st.write(st.session_state)
 
 if st.session_state.search or st.session_state.transcribe:
             
