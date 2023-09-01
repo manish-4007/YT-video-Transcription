@@ -35,8 +35,8 @@ def intall_ffmpeg():
         # lib_path = "/opt/ffmpeg/bin/ffmpeg"
 
         import pydub,ffmpeg 
-        ffmpeg_binary = f"{lib_path}"
-        ffprobe_binary = "/usr/bin/"
+        ffmpeg_binary = f"{lib_path}/ffmpeg"
+        ffprobe_binary = f"{lib_path}/ffprobe"
         # pydub.AudioSegment.ffmpeg = ffmpeg_binary
         ffmpeg.input.ffmpeg = ffmpeg_binary
         # pydub.AudioSegment.ffprobe = ffprobe_binary
