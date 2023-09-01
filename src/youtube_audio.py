@@ -8,6 +8,8 @@ import time,tempfile
 from googletrans import Translator
 import streamlit as st
 
+AudioSegment.ffmpeg = "/usr/bin/ffmpeg"
+AudioSegment.converter = '/usr/bin/ffprobe'
 start= time.time()
 
 directory = tempfile.gettempdir() 

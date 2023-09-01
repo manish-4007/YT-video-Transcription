@@ -45,14 +45,14 @@ def intall_ffmpeg():
         # lib_path = "/usr/local/bin/ffmpeg"
         # lib_path = "/opt/ffmpeg/bin/ffmpeg"
 
-        import ffmpeg 
-        from pydub import AudioSegment
-        ffmpeg_binary = lib_path
-        # ffprobe_binary = f"{lib_path}/ffprobe.exe"
-        AudioSegment.ffmpeg = ffmpeg_binary
-        ffmpeg.input.ffmpeg = "/usr/bin/ffmpeg.exe"
-        pydub.AudioSegment.converter = '/usr/bin/ffprobe'
-        # # ffmpeg.input.ffprobe = '/usr/bin/ffprobe'
+        # import ffmpeg 
+        # from pydub import AudioSegment
+        # ffmpeg_binary = lib_path
+        # # ffprobe_binary = f"{lib_path}/ffprobe.exe"
+        # AudioSegment.ffmpeg = ffmpeg_binary
+        # ffmpeg.input.ffmpeg = "/usr/bin/ffmpeg.exe"
+        # pydub.AudioSegment.converter = '/usr/bin/ffprobe'
+        # # # ffmpeg.input.ffprobe = '/usr/bin/ffprobe'
 
         print("ffmpeg and ffprobe setup done completely.")
     except Exception as e:
