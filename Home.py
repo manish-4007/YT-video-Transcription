@@ -18,6 +18,34 @@ def load_spacy():
 
     print("Loaded Sucessfully")
 
+@st.cache_resource
+def intall_ffmpeg():
+   
+    try:
+        print('Installing ffmpeg and ffprobe dependencies ............')
+        # # Run "apt install ffmpeg and ffprobe "
+        
+        # print(subprocess.run([sys.executable, "pip", "install", "pydub"], text=True))
+        print(subprocess.run(["sudo", "apt-get", "install", "ffmpeg"], capture_output=True, text=True))
+        print("ffmpeg and ffprobe installed successfully.")
+        
+        virtual_env_path = "./venv"
+        os.environ['PATH'] = f"{virtual_env_path}\\Scripts;{os.environ['PATH']}"
+
+        import pydub,ffmpeg 
+        ffmpeg_binary = f"{os.environ['PATH']}/ffmpeg"
+        ffprobe_binary = f"{os.environ['PATH']}/ffprobe"
+        pydub.AudioSegment.ffmpeg = ffmpeg_binary
+        pydub.AudioSegment.ffprobe = ffprobe_binary
+        ffmpeg.input.ffmpeg = ffmpeg_binary
+        ffmpeg.input.ffprobe = ffprobe_binary
+
+        print("ffmpeg and ffprobe setup done completely.")
+    except Exception as e:
+       print('Error :', e)
+       print('Installing Unsucessful.')
+
+
 st.title('Welcome To The Homepage ')
 st.title("\n")
 
@@ -133,6 +161,7 @@ if "dependencies" not in st.session_state:
     st.session_state.dependencies = True 
     try:
         load_spacy()
+        intall_ffmpeg()
     except Exception as e:
         print('Error in Loading :', e)
         pass

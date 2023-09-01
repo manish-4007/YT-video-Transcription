@@ -37,7 +37,7 @@ def intall_ffmpeg():
         print('Installing ffmpeg and ffprobe dependencies ............')
         # # Run "apt install ffmpeg and ffprobe "
         
-        print(subprocess.run([sys.executable, "pip", "install", "pydub"], text=True))
+        # print(subprocess.run([sys.executable, "pip", "install", "pydub"], text=True))
         print(subprocess.run(["sudo", "apt-get", "install", "ffmpeg"], capture_output=True, text=True))
         print("ffmpeg and ffprobe installed successfully.")
         
@@ -80,6 +80,9 @@ def install_img_magic_commands():
 
 
 
+load_spacy()
+install_img_magic_commands()
+intall_ffmpeg()
 setup(
     name = "YoutubeTranscription",
     version= '0.0.1',
@@ -88,6 +91,3 @@ setup(
     install_requires = get_requirements('requirements.txt'),
     packages= find_packages(),
 )
-load_spacy()
-install_img_magic_commands()
-intall_ffmpeg()
