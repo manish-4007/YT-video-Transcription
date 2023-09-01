@@ -38,15 +38,19 @@ def intall_ffmpeg():
         # # Run "apt install ffmpeg and ffprobe "
         
         print(subprocess.run([sys.executable, "pip", "install", "pydub"], text=True))
-        print(subprocess.run([sys.executable, "pip", "install", "ffmpeg"],  text=True))
+        print(subprocess.run(["sudo", "apt-get", "install", "ffmpeg"], capture_output=True, text=True))
         print("ffmpeg and ffprobe installed successfully.")
-        import pydub
         
         virtual_env_path = "./venv"
         os.environ['PATH'] = f"{virtual_env_path}\\Scripts;{os.environ['PATH']}"
-        
-        pydub.AudioSegment.ffmpeg = f"{os.environ['PATH']}/ffmpeg"
-        pydub.AudioSegment.ffprobe = f"{os.environ['PATH']}/ffprobe"
+
+        import pydub,ffmpeg 
+        ffmpeg_binary = f"{os.environ['PATH']}/ffmpeg"
+        ffprobe_binary = f"{os.environ['PATH']}/ffprobe"
+        pydub.AudioSegment.ffmpeg = ffmpeg_binary
+        pydub.AudioSegment.ffprobe = ffprobe_binary
+        ffmpeg.input.ffmpeg = ffmpeg_binary
+        ffmpeg.input.ffprobe = ffprobe_binary
 
         print("ffmpeg and ffprobe setup done completely.")
     except Exception as e:
@@ -58,7 +62,7 @@ def install_img_magic_commands():
     try:
         print('Installing Imagemagick dependencies ............')
         # # Run "apt install imagemagick"
-        subprocess.run(["sudo", "apt", "install", "imagemagick"], capture_output=True, text=True)
+        print(subprocess.run(["sudo", "apt", "install", "imagemagick"], capture_output=True, text=True))
         print("Imagemagick installed successfully.")
 
 
