@@ -38,19 +38,19 @@ def intall_ffmpeg():
         # # Run "apt install ffmpeg and ffprobe "
         
         # print(subprocess.run([sys.executable, "pip", "install", "pydub"], text=True))
-        print(subprocess.run(["sudo", "apt-get", "install", "ffmpeg"], capture_output=True, text=True))
+        print(subprocess.run(["sudo", "apt", "install", "ffmpeg"], capture_output=True, text=True))
         print("ffmpeg and ffprobe installed successfully.")
         
-        virtual_env_path = "./venv"
-        lib_path = f"{virtual_env_path}/Scripts/Lib/site-packages"
+        # virtual_env_path = "./venv"
+        # lib_path = f"{virtual_env_path}/Scripts/Lib/site-packages"
 
-        import pydub,ffmpeg 
-        ffmpeg_binary = f"{lib_path}/ffmpeg"
-        ffprobe_binary = f"{lib_path}/ffprobe"
-        pydub.AudioSegment.ffmpeg = ffmpeg_binary
-        pydub.AudioSegment.ffprobe = ffprobe_binary
-        ffmpeg.input.ffmpeg = ffmpeg_binary
-        ffmpeg.input.ffprobe = ffprobe_binary
+        # import pydub,ffmpeg 
+        # ffmpeg_binary = f"{lib_path}/ffmpeg"
+        # ffprobe_binary = f"{lib_path}/ffprobe"
+        # pydub.AudioSegment.ffmpeg = ffmpeg_binary
+        # pydub.AudioSegment.ffprobe = ffprobe_binary
+        # ffmpeg.input.ffmpeg = ffmpeg_binary
+        # ffmpeg.input.ffprobe = ffprobe_binary
 
         print("ffmpeg and ffprobe setup done completely.")
     except Exception as e:

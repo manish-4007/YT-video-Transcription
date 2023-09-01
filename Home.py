@@ -26,7 +26,7 @@ def intall_ffmpeg():
         # # Run "apt install ffmpeg and ffprobe "
         
         # print(subprocess.run([sys.executable, "pip", "install", "pydub"], text=True))
-        print(subprocess.run(["sudo", "apt-get", "install", "ffmpeg"], capture_output=True, text=True))
+        print(subprocess.run(["sudo", "apt", "install", "ffmpeg"], capture_output=True, text=True))
         print("ffmpeg and ffprobe installed successfully.")
         
         virtual_env_path = "./venv"
@@ -161,7 +161,7 @@ if "dependencies" not in st.session_state:
     st.session_state.dependencies = True 
     try:
         load_spacy()
-        intall_ffmpeg()
+        # intall_ffmpeg()
     except Exception as e:
         print('Error in Loading :', e)
         pass
