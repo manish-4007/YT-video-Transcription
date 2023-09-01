@@ -5,7 +5,7 @@ from pydub import AudioSegment
 from pydub.utils import which
 from pydub.silence import split_on_silence
 from pydub.silence import detect_nonsilent
-import time,tempfile,which
+import time,tempfile
 from googletrans import Translator
 import streamlit as st
 
