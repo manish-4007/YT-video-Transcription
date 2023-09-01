@@ -377,7 +377,6 @@ def show_hompage(key_1 ="reload",key_2 = 'Home'):
         
 show_hompage()
 
-st.write(st.session_state)
 st.title('Reel Subtitle Generater ')
 st.title('\n')
 colored_header(
