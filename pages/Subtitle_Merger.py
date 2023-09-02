@@ -354,15 +354,16 @@ def install_img_magic_commands():
     print("inagemagick installed successfully.")
 
     # Run "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"
-    subprocess.run(
-        ["sudo", "sh", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
-        capture_output=True,
-        text=True
-    )
-
-    install_img_magic_commands_linux()
-
-    print("All Set-up completed...")
+    # subprocess.run(
+    #     ["sudo", "sh", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
+    #     capture_output=True,
+    #     text=True
+    # )
+    try:
+      install_img_magic_commands_linux()
+      print("All Set-up completed...")
+    except Exception as e:
+       st.wrie(e)
 
 @st.cache_resource
 def load_model():
