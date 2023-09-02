@@ -552,10 +552,11 @@ try:
         
       if 'outputfile_path'  in st.session_state and st.session_state.outputfile_path is not None:
         show_audio_video(st.session_state.audio,st.session_state.outputfile_path)
+        st.session_state.outputfile_path = None
         
       if 'add_subtitles'  in st.session_state and st.session_state.add_subtitles is True:
         st.subheader('Generated Subtile for the video :')
-        st.write('- (There is problem while adding subtitles)')
+        st.write('( There is problem while embedding subtitles into video)')
         for line_s in st.session_state.linelevel_subtitles:
             st.write(f"{round(line_s['start'],2)} - {round(line_s['end'],2)} : {line_s['word']}")
         
