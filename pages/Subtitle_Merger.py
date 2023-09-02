@@ -435,7 +435,6 @@ show_hompage()
 
 st.title('Reel Subtitle Generater ')
 st.title('\n')
-st.write(st.session_state)
 colored_header(
     label="Generate and Embed the subtitles into the video",
     description="❗works faster on smaller video like yt shots ❗ ",

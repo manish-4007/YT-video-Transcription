@@ -7,8 +7,10 @@ I made Professional Maggi(Bengali) : https://www.youtube.com/watch?v=z4fdPwUc204
 
 Drone Pratap-Kalamadhyama(Kannada) : https://www.youtube.com/watch?v=5bLVOsFkx1o  (-- Important for Description and NLP, Topic Labelling and Text Extraction)
 
-Upcoming Mobile Phones (Telugu) : https://www.youtube.com/watch?v=TCuKW7thh8Y&pp=ygUUdGVsZWd1IG1vYmlsZSByZXZpZXc%3D
 ADIYAE review (Tamil) : https://www.youtube.com/watch?v=yHMsZJjsqE8
 
+best examples for our app
+Upcoming Mobile Phones (Telugu) : https://www.youtube.com/watch?v=TCuKW7thh8Y&pp=ygUUdGVsZWd1IG1vYmlsZSByZXZpZXc%3D
+Advice for ML (English) : https://www.youtube.com/watch?v=I2ZK3ngNvvI&pp=ygUYbWFjaGluZSBsZWFybmluZyBlbmdsaXNo
 
 NLP(English) : https://www.youtube.com/watch?v=vHw-V3x5Woo

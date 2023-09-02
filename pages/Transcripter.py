@@ -313,7 +313,7 @@ try:
         if st.checkbox('Download options'):
             with st.spinner(f"Downloading video - {yt.title}"):
                 downloader_btn(yt_url)
-            st.success('Video Downloaded Successfully😎😃 !!')
+            st.success('Video Downloaded Successfully😎😃 !! Click on the Download Button to Save into local.')
         
         my_grid = grid( [3,1],[4,1], vertical_align="bottom")
         my_grid.subheader(' Channel URL - ')

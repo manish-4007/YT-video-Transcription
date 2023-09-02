@@ -6,21 +6,25 @@ from streamlit_extras.colored_header import colored_header
 import os,time,subprocess,sys
 from src.youtube_audio import set_ffmpeg
 
-@st.cache_resource
-def load_spacy():
-    print("Loading spacy dependencies.....")
+# @st.cache_resource
+# def load_spacy():
+#     print("Loading spacy dependencies.....")
     
-    virtual_env_path = "./venv"
-    # activate_script = os.path.join(virtual_env_path, "Scripts", "activate")
-    # subprocess.run([activate_script], shell=True, text=True)
-    os.environ['PATH'] = f"{virtual_env_path}\\Scripts;{os.environ['PATH']}"
-    print(subprocess.run("pip install spacy".split(),check=True))
-    print(subprocess.run([sys.executable, "-m", "spacy", "download", 'en_core_web_lg'], text=True))
+#     virtual_env_path = "./venv"
+#     # activate_script = os.path.join(virtual_env_path, "Scripts", "activate")
+#     # subprocess.run([activate_script], shell=True, text=True)
+#     os.environ['PATH'] = f"{virtual_env_path}\\Scripts;{os.environ['PATH']}"
+#     print(subprocess.run("pip install spacy".split(),check=True))
+#     print(subprocess.run([sys.executable, "-m", "spacy", "download", 'en_core_web_lg'], text=True))
 
-    print("Loaded Sucessfully")
+#     print("Loaded Sucessfully")
 
 @st.cache_resource
 def intall_ffmpeg():
+    from pydub import AudioSegment
+    from pydub.utils import which
+    import ffmpeg
+    
     try:
         print('Installing ffmpeg and ffprobe dependencies ............')
         # # Run "apt install ffmpeg and ffprobe "
@@ -31,17 +35,11 @@ def intall_ffmpeg():
         
         virtual_env_path = "./venv"
         lib_path = "/usr/bin/ffmpeg"
-        # lib_path = "/usr/local/bin/ffmpeg"
-        # lib_path = "/opt/ffmpeg/bin/ffmpeg"
 
-        # from pydub import AudioSegment
-        # import ffmpeg
-        # ffmpeg_binary = lib_path
-        # # ffprobe_binary = f"{lib_path}/ffprobe.exe"
-        # AudioSegment.ffmpeg = ffmpeg_binary
-        # ffmpeg.input.ffmpeg = "/usr/bin/ffmpeg.exe"
-        # AudioSegment.converter = '/usr/bin/ffprobe'
-        # # # ffmpeg.input.ffprobe = '/usr/bin/ffprobe'
+        ffmpeg_binary = lib_path
+        AudioSegment.ffmpeg = ffmpeg_binary
+        AudioSegment.converter = which("ffmpeg")
+        ffmpeg.input.ffprobe = '/usr/bin/ffprobe'
 
         print("ffmpeg and ffprobe setup done completely.")
     except Exception as e:
