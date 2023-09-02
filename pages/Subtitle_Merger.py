@@ -542,7 +542,7 @@ try:
                   except Exception as e:
                       st.session_state.add_subtitles = True
                       outputfile = videofilename
-                      st.write('There is an erro:',e)
+                      # st.write('There is an erro:',e)
               else:
                   outputfile = videofilename
               st.session_state.outputfile_path = outputfile
@@ -566,4 +566,3 @@ except Exception as e:
 
 if st.session_state.edit:
   show_hompage(key_1='sub_mer_rel', key_2='sub_mer_hm')
-st.write(st.session_state)
