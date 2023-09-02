@@ -75,11 +75,11 @@ def install_img_magic_commands():
 
 
         # Run "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"
-        subprocess.run(
-            ["sudo", "sh", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
+        print(subprocess.run(
+            ["sudo","-S", "sh", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
             capture_output=True,
             text=True
-        )
+        ))
         
         print("Imagemagick setup done completely.")
     except Exception as e:
