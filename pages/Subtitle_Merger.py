@@ -298,18 +298,20 @@ def show_audio_video(audio,video):
 import subprocess
 
 def install_img_magic_commands_linux():
-   
-    # # Run "apt install imagemagick"
-    subprocess.run(["sudo", "apt", "install", "imagemagick"], capture_output=True, text=True)
-    print("inagemagick installed successfully.")
+   try: 
+      # # Run "apt install imagemagick"
+      subprocess.run(["sudo", "apt", "install", "imagemagick"], capture_output=True, text=True)
+      print("inagemagick installed successfully.")
 
 
-    # Run "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"
-    subprocess.run(
-        ["sudo", "sh", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
-        capture_output=True,
-        text=True
-    )
+      # Run "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"
+      subprocess.run(
+          ["sudo", "sh", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
+          capture_output=True,
+          text=True
+      )
+   except Exception as e:
+      st.write(e)
 
 
 @st.cache_resource()
