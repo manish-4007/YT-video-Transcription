@@ -542,7 +542,6 @@ try:
                   except Exception as e:
                       st.session_state.add_subtitles = True
                       outputfile = videofilename
-                      st.write('There is problem while adding subtitles, Showing Original video')
                       st.write('There is an erro:',e)
               else:
                   outputfile = videofilename
@@ -550,10 +549,13 @@ try:
               st.success('Video Created')
           except Exception as e:
              st.write('There is an erro:',e)
-      if 'outputfile_path'  in st.session_state and st.session_state.outputfile_path is not None:
         
-        show_audio_video(audiofilename,st.session_state.outputfile_path)
+      if 'outputfile_path'  in st.session_state and st.session_state.outputfile_path is not None:
+        show_audio_video(st.session_state.audio,st.session_state.outputfile_path)
+        
+      if 'add_subtitles'  in st.session_state and st.session_state.add_subtitles is True:
         st.subheader('Generated Subtile for the video :')
+        st.write('- (There is problem while adding subtitles)')
         for line_s in st.session_state.linelevel_subtitles:
             st.write(f"{round(line_s['start'],2)} - {round(line_s['end'],2)} : {line_s['word']}")
         
