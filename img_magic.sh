@@ -4,6 +4,7 @@ chmod u=rwx g=rwx o=rw  /etc/ImageMagick-6/policy.xml
 chmod -R 777 /root/
 chmod -R 777 ./temp/
 echo "Fetching Done"
+whoami
 cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g' > /etc/ImageMagick-6/policy.xml
 #!/bin/sh
 
