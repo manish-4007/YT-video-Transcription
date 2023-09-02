@@ -3,7 +3,7 @@ sudo chmod +w /etc/ImageMagick-6/policy.xml
 sudo chmod -R 777 /usr/
 sudo chmod -R 777 /root/
 echo "Fetching Done"
-# sudo -S cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g' > /etc/ImageMagick-6/policy.xml
+sudo -S cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g' > /etc/ImageMagick-6/policy.xml
 #!/bin/sh
 
 # # Specify the paths to the input and output policy.xml files
