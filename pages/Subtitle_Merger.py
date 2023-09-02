@@ -538,6 +538,7 @@ try:
               if 'img_magik' in st.session_state:
                   try:
                      outputfile = add_subtitle(videofilename, audiofilename, v_type)
+                     st.session_state.add_subtitles = True
                   except Exception as e:
                     
                     outputfile = videofilename
@@ -552,6 +553,7 @@ try:
       if 'outputfile_path'  in st.session_state and st.session_state.outputfile_path is not None:
         
         show_audio_video(audiofilename,st.session_state.outputfile_path)
+      if 'add_subtitles' in st.session_state and st.session_state.add_subtitles==True:
         for line_s in st.session_state.linelevel_subtitles:
            st.write(line_s)
         
