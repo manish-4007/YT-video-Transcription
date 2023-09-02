@@ -306,11 +306,23 @@ def install_img_magic_commands_linux():
 
 
       # Run "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"
-      st.write(subprocess.run(
-          ["sudo", "sh", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
-          capture_output=True,
-          text=True
-      ))
+      # st.write(subprocess.run(
+      #     ["sudo", "sh", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
+      #     capture_output=True,
+      #     text=True
+      # ))
+      
+      with open('/etc/ImageMagick-6/policy.xml', 'r') as file:
+        policy_contents = file.read()
+
+      # Update the policy contents``
+      updated_policy = policy_contents.replace('<rights>none</rights>', '<rights>read,write</rights>')
+
+      # Write the updated policy back to the file
+      with open('/etc/ImageMagick-6/policy.xml', 'w') as file:
+          file.write(updated_policy)
+          
+      
    except Exception as e:
       st.write(e)
 
