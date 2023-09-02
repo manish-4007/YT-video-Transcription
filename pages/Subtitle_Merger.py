@@ -277,6 +277,8 @@ def add_subtitle (videofilename, audiofilename, v_type):
   linelevel_subtitles = split_text_into_lines(wordlevel_info, v_type)
   print ("line_level_subtitles :",linelevel_subtitles)
   st.session_state.linelevel_subtitles = linelevel_subtitles
+  for line_s in st.session_state.linelevel_subtitles:
+      st.write(line_s)
 
   for line in linelevel_subtitles:
     json_str = json.dumps(line, indent=4)
@@ -562,3 +564,5 @@ except Exception as e:
 
 if st.session_state.edit:
   show_hompage(key_1='sub_mer_rel', key_2='sub_mer_hm')
+
+st.write(st.session_state)
