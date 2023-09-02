@@ -260,7 +260,6 @@ def get_final_cliped_video(videofilename, linelevel_subtitles, v_type ):
       # Set the audio of the final video to be the same as the input video
       final_video = final_video.set_audio(input_video.audio)
       st.write(destination, "Updated video")
-      st.video(final_video)
       destination = os.path.join(directory,'output.mp4')
       # Save the final clip as a video file with the audio included
       final_video.write_videofile(destination, fps=24, codec="libx264", audio_codec="aac")  
@@ -400,6 +399,7 @@ show_hompage()
 
 st.title('Reel Subtitle Generater ')
 st.title('\n')
+st.write(st.session_state)
 colored_header(
     label="Generate and Embed the subtitles into the video",
     description="❗works faster on smaller video like yt shots ❗ ",
@@ -503,6 +503,8 @@ try:
                   try:
                      outputfile = add_subtitle(videofilename, audiofilename, v_type)
                   except Exception as e:
+                    
+                    outputfile = videofilename
                     st.write('There is an erro:',e)
               else:
                   outputfile = videofilename
