@@ -466,21 +466,24 @@ try:
         if st.button('Edit Video', use_container_width=True):
           st.session_state.edit =True
 
-          if 'audio' not in st.session_state:
-            with st.spinner('Converting Audio.......'):
-              audiofilename = create_audio(videofilename) 
-              st.success('Audio Created')
-              st.session_state.audio = audiofilename 
+          try:
+            if 'audio' not in st.session_state:
+              with st.spinner('Converting Audio.......'):
+                audiofilename = create_audio(videofilename) 
+                st.success('Audio Created')
+                st.session_state.audio = audiofilename 
 
-        
-          audiofilename =  st.session_state.audio 
-          with st.spinner('Editing Video.......'):
-            if 'img_magik' in st.session_state:
-                outputfile = add_subtitle(videofilename, audiofilename, v_type)
-            else:
-                outputfile = videofilename
-            st.session_state.outputfile_path = outputfile
-            st.success('Video Created')
+          
+            audiofilename =  st.session_state.audio 
+            with st.spinner('Editing Video.......'):
+              if 'img_magik' in st.session_state:
+                  outputfile = add_subtitle(videofilename, audiofilename, v_type)
+              else:
+                  outputfile = videofilename
+              st.session_state.outputfile_path = outputfile
+              st.success('Video Created')
+          except Exception as e:
+             st.write('There is an erro:',e)
       if 'outputfile_path'  in st.session_state and st.session_state.outputfile_path is not None:
         show_audio_video(audiofilename,st.session_state.outputfile_path)
         
