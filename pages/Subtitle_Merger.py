@@ -344,7 +344,7 @@ def install_img_magic_commands():
 
     # IMAGEMAGICK_BINARY  = os.getenv ('IMAGEMAGICK_BINARY', 'C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\convert.exe')
     subprocess.run(
-        ["sudo", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
+        ["sudo", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
         capture_output=True,
         text=True
     )
