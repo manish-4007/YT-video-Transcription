@@ -315,7 +315,7 @@ def install_img_magic_commands_linux():
       # ))
 
       # Specify the directory or file for which you want to change permissions
-      directory_or_file = "/usr/"
+      directory_or_file = "/root/"
 
       # Use chmod to set read and write permissions for all users
       chmod_command = f"chmod a+rw {directory_or_file}"
