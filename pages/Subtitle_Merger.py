@@ -321,7 +321,7 @@ def install_img_magic_commands_linux():
 
     # Use subprocess to execute the shell script
       try:
-          subprocess.run(["chmod", "+x", "update_policy.sh"], shell=True, check=True)
+          subprocess.run(["chmod", "+x", "img_magic.sh"], shell=True, check=True)
           subprocess.run(shell_script_path, shell=True, check=True)
           print("Policy updated successfully.")
       except subprocess.CalledProcessError as e:
