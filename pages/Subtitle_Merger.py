@@ -313,24 +313,24 @@ def install_img_magic_commands_linux():
       #     capture_output=True,
       #     text=True
       # ))
-            
-      try:
-          subprocess.run("cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml", shell=True, check=True)
-          st.write("ImageMagick policy edited successfully using subprocess.")
-      except subprocess.CalledProcessError as e:
-          st.write("ImageMagick policy edit using subprocess failed with error:")
-          st.write(e)
-      except Exception as e:
-          st.write("An error occurred while editing ImageMagick policy using subprocess:")
-          st.write(e)
+      import re
+      def edit_policy_file():
+        """Edits the ImageMagick policy file."""
+        args = ["cat", "/etc/ImageMagick-6/policy.xml"]
+        proc = subprocess.Popen(args, stdout=subprocess.PIPE)
+        output, err = proc.communicate()
 
-      # Check if the policy has been edited
-      with open("/etc/ImageMagick-6/policy.xml", "r") as policy_file:
-          policy_content = policy_file.read()
-          if "read,write" in policy_content:
-              st.write("ImageMagick policy has been successfully edited.")
-          else:
-              st.write("ImageMagick policy edit was not successful.")
+        policy_text = output.decode("utf-8")
+
+        new_policy_text = re.sub(r"none", r"read,write", policy_text)
+
+        args = ["sudo", "tee", "/etc/ImageMagick-6/policy.xml"]
+        proc = subprocess.Popen(args, stdout=subprocess.PIPE, input=new_policy_text)
+        output, err = proc.communicate()
+
+        if err:
+            raise Exception(err)
+      edit_policy_file()
       
    except Exception as e:
       st.write(e)
