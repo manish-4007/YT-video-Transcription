@@ -278,7 +278,7 @@ def add_subtitle (videofilename, audiofilename, v_type):
   print ("line_level_subtitles :",linelevel_subtitles)
   st.session_state.linelevel_subtitles = linelevel_subtitles
   for line_s in st.session_state.linelevel_subtitles:
-      st.write(line_s)
+      st.write(f"{line_s['start']} - {line_s['end']} : {line_s['word']}")
 
   for line in linelevel_subtitles:
     json_str = json.dumps(line, indent=4)
