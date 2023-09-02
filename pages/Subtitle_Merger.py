@@ -319,7 +319,7 @@ def install_img_magic_commands_linux():
           subprocess.run(command, shell=True, check=True)
           st.success("ImageMagick policy updated successfully!")
       except subprocess.CalledProcessError as e:
-          st.error(f"An error occurred: {e.stderr.decode()}")
+          st.error(f"An error occurred: {e}")
       
    except Exception as e:
       st.write(e)
