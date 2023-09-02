@@ -314,22 +314,18 @@ def install_img_magic_commands_linux():
       #     text=True
       # ))
       import re
+            
       def edit_policy_file():
-        """Edits the ImageMagick policy file."""
-        args = ["cat", "/etc/ImageMagick-6/policy.xml"]
-        proc = subprocess.Popen(args, stdout=subprocess.PIPE)
-        output, err = proc.communicate()
+          """Edits the ImageMagick policy file."""
+          with open("/etc/ImageMagick-6/policy.xml", "r") as f:
+              data = f.read()
 
-        policy_text = output.decode("utf-8")
+          data = re.sub("none", "read,write", data)
 
-        new_policy_text = re.sub(r"none", r"read,write", policy_text)
+          with open("/etc/ImageMagick-6/policy.xml", "w") as f:
+              f.write(data)
 
-        args = ["sudo", "tee", "/etc/ImageMagick-6/policy.xml"]
-        proc = subprocess.Popen(args, stdout=subprocess.PIPE, input=new_policy_text)
-        output, err = proc.communicate()
 
-        if err:
-            raise Exception(err)
       edit_policy_file()
       
    except Exception as e:
