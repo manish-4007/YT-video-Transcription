@@ -261,7 +261,8 @@ def get_final_cliped_video(videofilename, linelevel_subtitles, v_type ):
   destination = os.path.join(directory,'output.mp4')
   # Save the final clip as a video file with the audio included
   final_video.write_videofile(destination, fps=24, codec="libx264", audio_codec="aac")
- 
+  st.write(destination, "Updated video")
+  st.video(final_video)
   return destination
 
 
