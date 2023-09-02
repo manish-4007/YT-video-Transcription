@@ -313,7 +313,7 @@ try:
         if st.checkbox('Download options'):
             with st.spinner(f"Downloading video - {yt.title}"):
                 downloader_btn(yt_url)
-            st.sucess('Video Downloaded Successfully😎😃 !!')
+            st.success('Video Downloaded Successfully😎😃 !!')
         
         my_grid = grid( [3,1],[4,1], vertical_align="bottom")
         my_grid.subheader(' Channel URL - ')
@@ -564,7 +564,7 @@ except Exception as e:
     st.subheader("Some Error Occured😢, please select the video again😊")
     print("Error Occured: ",e)
     st.write(e)
-    st.write(st.session_state)
+    # st.write(st.session_state)
 
 if st.session_state.search or st.session_state.transcribe:
             
