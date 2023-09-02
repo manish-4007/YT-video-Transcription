@@ -566,3 +566,4 @@ except Exception as e:
 
 if st.session_state.edit:
   show_hompage(key_1='sub_mer_rel', key_2='sub_mer_hm')
+st.write(st.session_state)
