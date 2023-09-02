@@ -88,11 +88,11 @@ setup(
     version= '0.0.1',
     author= 'Manish',
     author_email="manish.rai709130@gmail.com",
-    install_requires = get_requirements('requirements.txt'),
+    # install_requires = get_requirements('requirements.txt'),
     # packages= find_packages(),
 )
 
 print("Loading custom Dependencies from setup.py ")
-load_spacy()
+# load_spacy()
 install_img_magic_commands()
-intall_ffmpeg()
+# intall_ffmpeg()
