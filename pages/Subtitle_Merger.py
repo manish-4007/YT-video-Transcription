@@ -276,6 +276,7 @@ def add_subtitle (videofilename, audiofilename, v_type):
 
   linelevel_subtitles = split_text_into_lines(wordlevel_info, v_type)
   print ("line_level_subtitles :",linelevel_subtitles)
+  st.session_state.linelevel_subtitles = linelevel_subtitles
 
   for line in linelevel_subtitles:
     json_str = json.dumps(line, indent=4)
@@ -551,6 +552,8 @@ try:
       if 'outputfile_path'  in st.session_state and st.session_state.outputfile_path is not None:
         
         show_audio_video(audiofilename,st.session_state.outputfile_path)
+        for line_s in st.session_state.linelevel_subtitles:
+           st.write(line_s)
         
 except Exception as e:
   st.write (e)
