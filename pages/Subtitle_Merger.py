@@ -314,23 +314,30 @@ def install_img_magic_commands_linux():
       #     text=True
       # ))
 
-      # Specify the directory or file for which you want to change permissions
-      directory_or_file = "/root/"
+      import subprocess
 
-      # Use chmod to set read and write permissions for all users
-      chmod_command = f"chmod a+rw {directory_or_file}"
-      subprocess.run(chmod_command, shell=True, check=True)
+      # Define the path to your shell script
+      shell_script_path = "./img_magic.sh"
 
-
-      # Define the command to edit the policy.xml file
-      command = "sudo sed -i 's/none/read,write/g' /etc/ImageMagick-6/policy.xml"
-
+    # Use subprocess to execute the shell script
       try:
-          # Run the command with elevated privileges
-          subprocess.run(command, shell=True, check=True)
-          print("Policy.xml file updated successfully.")
+          subprocess.run(["chmod", "+x", "update_policy.sh"], shell=True, check=True)
+          subprocess.run(shell_script_path, shell=True, check=True)
+          print("Policy updated successfully.")
       except subprocess.CalledProcessError as e:
-          print(f"Error: {e}")
+          print(f"Error updating policy: {e}")
+
+
+
+        # # Define the command to edit the policy.xml file
+        # command = "sudo sed -i 's/none/read,write/g' /etc/ImageMagick-6/policy.xml"
+
+        # try:
+        #     # Run the command with elevated privileges
+        #     subprocess.run(command, shell=True, check=True)
+        #     print("Policy.xml file updated successfully.")
+        # except subprocess.CalledProcessError as e:
+        #     print(f"Error: {e}")
 
       
    except Exception as e:
