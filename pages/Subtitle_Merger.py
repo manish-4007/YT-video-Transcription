@@ -443,12 +443,14 @@ try:
           f.write(video_file.read())
       
       st.session_state.videofile_path = videofilename
+      st.session_state.audio = None
 
   if clip_sbtitle:
       video_file = None
       download_video(video_url)
       videofilename = os.path.join(directory,"video.mp4")
       st.session_state.videofile_path = videofilename
+      st.session_state.audio = None
       
     
   if "edit" not in st.session_state:
@@ -469,7 +471,7 @@ try:
             
           with st.spinner('Converting Audio.......'):
             
-            if 'audio' not in st.session_state:
+            if st.session_state.audio is None:
               audiofilename = create_audio(videofilename)
               st.session_state.audio = audiofilename 
             
@@ -482,7 +484,7 @@ try:
           st.session_state.edit =True
 
           try:
-            if 'audio' not in st.session_state:
+            if st.session_state.audio is None:
               with st.spinner('Converting Audio.......'):
                 audiofilename = create_audio(videofilename) 
                 st.success('Audio Created')
