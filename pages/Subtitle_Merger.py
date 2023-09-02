@@ -492,10 +492,12 @@ try:
             audiofilename =  st.session_state.audio 
             with st.spinner('Editing Video.......'):
               if 'img_magik' in st.session_state:
-                  outputfile = add_subtitle(videofilename, audiofilename, v_type)
+                  try:
+                     outputfile = add_subtitle(videofilename, audiofilename, v_type)
+                  except Exception as e:
+                    st.write('There is an erro:',e)
               else:
                   outputfile = videofilename
-              st.write(outputfile)
               st.session_state.outputfile_path = outputfile
               st.success('Video Created')
           except Exception as e:
@@ -504,7 +506,7 @@ try:
         show_audio_video(audiofilename,st.session_state.outputfile_path)
         
 except Exception as e:
-  st.write(e)
+  st.write (e)
 
 if st.session_state.edit:
   show_hompage(key_1='sub_mer_rel', key_2='sub_mer_hm')
