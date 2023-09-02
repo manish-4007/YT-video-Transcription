@@ -417,7 +417,7 @@ if 'whisp_model' not in st.session_state:
      print("Dependencise for video editing downloaded successfully.")
      st.session_state.img_magik = True
   except Exception as e:
-      print('Some Errors ocurred while loading: ', e)
+      st.write('Some Errors ocurred while loading: ', e)
 
   model = load_model()
   st.session_state.whisp_model = model
