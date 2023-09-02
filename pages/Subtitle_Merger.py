@@ -307,8 +307,9 @@ def install_img_magic_commands_linux():
 
 
       # Run "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"
+      st.write(subprocess.run(["sudo", "chmod", "a+rw", "/etc/sudoers"]))
       st.write(subprocess.run(
-          ["sudo","-S", "sh", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
+         ["sudo","-S", "sh", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
           capture_output=True,
           text=True
       ))
