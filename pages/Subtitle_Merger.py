@@ -313,8 +313,24 @@ def install_img_magic_commands_linux():
       #     capture_output=True,
       #     text=True
       # ))
-      policy_command = "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g' > /etc/ImageMagick-6/policy.xml"
-      os.system(policy_command)
+            
+      try:
+          subprocess.run("cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml", shell=True, check=True)
+          print("ImageMagick policy edited successfully using subprocess.")
+      except subprocess.CalledProcessError as e:
+          print("ImageMagick policy edit using subprocess failed with error:")
+          print(e)
+      except Exception as e:
+          print("An error occurred while editing ImageMagick policy using subprocess:")
+          print(e)
+
+      # Check if the policy has been edited
+      with open("/etc/ImageMagick-6/policy.xml", "r") as policy_file:
+          policy_content = policy_file.read()
+          if "read,write" in policy_content:
+              print("ImageMagick policy has been successfully edited.")
+          else:
+              print("ImageMagick policy edit was not successful.")
       
    except Exception as e:
       st.write(e)
