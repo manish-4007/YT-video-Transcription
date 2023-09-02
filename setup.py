@@ -32,35 +32,6 @@ def load_spacy():
     print("Loaded Sucessfully")
    
 def intall_ffmpeg():
-    try:
-        print('Installing ffmpeg and ffprobe dependencies ............')
-        # # Run "apt install ffmpeg and ffprobe "
-        
-        print(subprocess.run([sys.executable, "pip", "install", "pydub"," ", "simpleaudio"], text=True))
-        print(subprocess.run(["sudo", "apt", "install", "ffmpeg"], capture_output=True, text=True))
-        print("ffmpeg and ffprobe installed successfully.")
-        
-        virtual_env_path = "./venv"
-        lib_path = "/usr/bin/ffmpeg"
-        # lib_path = "/usr/local/bin/ffmpeg"
-        # lib_path = "/opt/ffmpeg/bin/ffmpeg"
-
-        # import ffmpeg 
-        # from pydub import AudioSegment
-        # ffmpeg_binary = lib_path
-        # # ffprobe_binary = f"{lib_path}/ffprobe.exe"
-        # AudioSegment.ffmpeg = ffmpeg_binary
-        # ffmpeg.input.ffmpeg = "/usr/bin/ffmpeg.exe"
-        # pydub.AudioSegment.converter = '/usr/bin/ffprobe'
-        # # # ffmpeg.input.ffprobe = '/usr/bin/ffprobe'
-
-        print("ffmpeg and ffprobe setup done completely.")
-    except Exception as e:
-       print('Error :', e)
-       print('Installing Unsucessful.')
-
-
-   
     print('Installing ffmpeg and ffprobe dependencies ............')
     try:
         # # Run "apt install ffmpeg and ffprobe "
@@ -83,6 +54,13 @@ def intall_ffmpeg():
         ffmpeg.input.ffprobe = ffprobe_binary
 
         print("ffmpeg and ffprobe setup done completely.")
+
+        subprocess.run(
+        ["sudo", "sh", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
+        capture_output=True,
+        text=True
+        )
+        print("Policy update on imageMagick executed successfully.")
     except Exception as e:
        print('Error :', e)
        print('Installing Unsucessful.')
