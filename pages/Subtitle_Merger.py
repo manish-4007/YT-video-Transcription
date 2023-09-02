@@ -322,17 +322,17 @@ def install_img_magic_commands_linux():
     # Use subprocess to execute the shell script
       try:
           subprocess.run(['chmod', '+x', shell_script_path], check=True)
-          print(f"File {shell_script_path} is now executable.")
-          
+          st.write(f"File {shell_script_path} is now executable.")
+
           subprocess.run(["./img_magic.sh"])
 
           # Check the return code for success or failure
           if subprocess.returncode == 0:
-              print("Script executed successfully!")
+              st.write("Script executed successfully!")
           else:
-              print("Script encountered an error.")
+              st.write("Script encountered an error.")
       except subprocess.CalledProcessError as e:
-          print(f"Error: {e}")
+          st.write(f"Error: {e}")
 
 
 
