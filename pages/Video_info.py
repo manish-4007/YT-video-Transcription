@@ -287,7 +287,6 @@ try:
                     st.write(f" {key} - [ {value[0]} - {value[1]} ]   :   {text_translator(st.session_state.transcribed_src_dict[key], subtitle_lang)[1]}")
 
     if st.button("back to Transcription Page"):
-        st.session_state.clear()
         switch_page('Transcripter')
 
 except Exception as e:
