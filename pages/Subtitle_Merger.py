@@ -331,7 +331,10 @@ def install_img_magic_commands():
     FFMPEG_BINARY='/usr/bin/ffmpeg'
     IMAGEMAGICK_BINARY='/usr/bin/convert'
 
+    import moviepy.editor as mp
 
+    # Set the path to the ImageMagick binary (replace '/usr/bin/convert' with your actual path)
+    mp.config.change_settings(imagemagick_binary=IMAGEMAGICK_BINARY)
 
     # # Get the current PATH variable
     current_path = os.environ['PATH']
