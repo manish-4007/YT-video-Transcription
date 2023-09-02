@@ -15,7 +15,7 @@ def load_spacy():
     # subprocess.run([activate_script], shell=True, text=True)
     os.environ['PATH'] = f"{virtual_env_path}\\Scripts;{os.environ['PATH']}"
     print(subprocess.run("pip install spacy".split(),check=True))
-    print(subprocess.run([sys.executable, "-m", "spacy", "download", 'en_core_web_sm'], text=True))
+    print(subprocess.run([sys.executable, "-m", "spacy", "download", 'en_core_web_lg'], text=True))
 
     print("Loaded Sucessfully")
 

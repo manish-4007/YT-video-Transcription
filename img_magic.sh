@@ -1,9 +1,9 @@
 #!/bin/bash
 # sudo -S chown appuser /etc/ImageMagick-6/policy.xml
 # sudo -S chmod u+w /etc/ImageMagick-6/policy.xml
-echo "Fetching Done"
-whoami
-sudo -S cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g' > /etc/ImageMagick-6/policy.xml
+# echo "Fetching Done"
+# whoami
+# sudo -S cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g' > /etc/ImageMagick-6/policy.xml
 #!/bin/sh
 
 # # Specify the paths to the input and output policy.xml files

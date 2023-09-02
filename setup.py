@@ -26,7 +26,7 @@ def load_spacy():
     # print(subprocess.run("pip install spacy".split(),check=True))
     # print(subprocess.run([sys.executable, "-m","pip", "install","--upgrade", "pip"], text=True))
     
-    print(subprocess.run([sys.executable, "-m", "spacy", "download", 'en_core_web_sm'], text=True))
+    print(subprocess.run([sys.executable, "-m", "spacy", "download", 'en_core_web_lg'], text=True))
 
 
     print("Loaded Sucessfully")
@@ -59,31 +59,6 @@ def intall_ffmpeg():
        print('Error :', e)
        print('Installing Unsucessful.')
 
-def install_img_magic_commands():
-   
-    try:
-        print('Installing Imagemagick dependencies ............')
-        # # Run "apt install imagemagick"
-        subprocess.run(["sudo", "apt", "install", "imagemagick"], capture_output=True, text=True)
-        print("Imagemagick installed successfully.")
-
-
-        # Run "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"
-        
-        import re
-                
-        """Edits the ImageMagick policy file."""
-        with open("/etc/ImageMagick-6/policy.xml", "r") as f:
-            data = f.read()
-
-        data = re.sub("none", "read,write", data)
-
-        with open("/etc/ImageMagick-6/policy.xml", "w") as f:
-            f.write(data)
-    except Exception as e:
-       print('Error :', e)
-       print('Installing Unsucessful.')
-
 
 setup(
     name = "YoutubeTranscription",
@@ -95,6 +70,5 @@ setup(
 )
 
 print("Loading custom Dependencies from setup.py ")
-install_img_magic_commands()
-# load_spacy()
-# intall_ffmpeg()
+load_spacy()
+intall_ffmpeg()
