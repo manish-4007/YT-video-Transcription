@@ -1,6 +1,6 @@
 #!/bin/bash
 chmod +w /etc/ImageMagick-6/policy.xml
-chmod u=rwx g=rwx o=rw  /etc/ImageMagick-6/policy.xml
+chmod -R 777  /etc/ImageMagick-6/policy.xml
 chmod -R 777 /root/
 chmod -R 777 ./temp/
 echo "Fetching Done"
