@@ -323,7 +323,8 @@ def install_img_magic_commands_linux():
       try:
           subprocess.run(['chmod', '+x', shell_script_path], check=True)
           print(f"File {shell_script_path} is now executable.")
-          subprocess.run(["./update_policy.sh"])
+          
+          subprocess.run(["./img_magic.sh"])
 
           # Check the return code for success or failure
           if subprocess.returncode == 0:
