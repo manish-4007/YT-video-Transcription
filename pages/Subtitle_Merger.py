@@ -302,7 +302,7 @@ from getpass import getuser
 def install_img_magic_commands_linux():
    try: 
       # # Run "apt install imagemagick"
-      (subprocess.run(["sudo", "apt", "install", "imagemagick"], capture_output=True, text=True))
+      st.write(subprocess.run(["sudo", "apt", "install", "imagemagick"], capture_output=True, text=True))
       st.write("inagemagick installed successfully.")
 
 
@@ -418,7 +418,7 @@ if 'whisp_model' not in st.session_state:
   print("Downloading dependecies...")
 
   try:
-    #  install_img_magic_commands_linux()  
+     install_img_magic_commands_linux()  
      print("Dependencise for video editing downloaded successfully.")
      st.session_state.img_magik = True
   except Exception as e:
