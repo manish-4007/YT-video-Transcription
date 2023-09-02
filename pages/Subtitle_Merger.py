@@ -313,16 +313,16 @@ def install_img_magic_commands_linux():
       #     capture_output=True,
       #     text=True
       # ))
-      import re
-            
-      """Edits the ImageMagick policy file."""
-      with open("/etc/ImageMagick-6/policy.xml", "r") as f:
-          data = f.read()
 
-      data = re.sub("none", "read,write", data)
+      # Define the command to edit the policy.xml file
+      command = "sudo sed -i 's/none/read,write/g' /etc/ImageMagick-6/policy.xml"
 
-      with open("/etc/ImageMagick-6/policy.xml", "w") as f:
-          f.write(data)
+      try:
+          # Run the command with elevated privileges
+          subprocess.run(command, shell=True, check=True)
+          print("Policy.xml file updated successfully.")
+      except subprocess.CalledProcessError as e:
+          print(f"Error: {e}")
 
       
    except Exception as e:
