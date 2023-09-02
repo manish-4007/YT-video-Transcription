@@ -55,12 +55,6 @@ def intall_ffmpeg():
 
         print("ffmpeg and ffprobe setup done completely.")
 
-        subprocess.run(
-        ["sudo", "sh", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
-        capture_output=True,
-        text=True
-        )
-        print("Policy update on imageMagick executed successfully.")
     except Exception as e:
        print('Error :', e)
        print('Installing Unsucessful.')
@@ -80,6 +74,8 @@ def install_img_magic_commands():
             capture_output=True,
             text=True
         ))
+        
+        print("Policy update on imageMagick executed successfully.")
         
         print("Imagemagick setup done completely.")
     except Exception as e:
