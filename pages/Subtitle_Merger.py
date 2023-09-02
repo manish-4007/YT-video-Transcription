@@ -297,19 +297,20 @@ def show_audio_video(audio,video):
 
 import subprocess
 
+@st.cache_resource
 def install_img_magic_commands_linux():
    try: 
       # # Run "apt install imagemagick"
-      subprocess.run(["sudo", "apt", "install", "imagemagick"], capture_output=True, text=True)
-      print("inagemagick installed successfully.")
+      (subprocess.run(["sudo", "apt", "install", "imagemagick"], capture_output=True, text=True))
+      st.write("inagemagick installed successfully.")
 
 
       # Run "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"
-      subprocess.run(
+      st.write(subprocess.run(
           ["sudo", "sh", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
           capture_output=True,
           text=True
-      )
+      ))
    except Exception as e:
       st.write(e)
 
@@ -415,7 +416,7 @@ if 'whisp_model' not in st.session_state:
   print("Downloading dependecies...")
 
   try:
-     install_img_magic_commands()  
+     install_img_magic_commands_linux()  
      print("Dependencise for video editing downloaded successfully.")
      st.session_state.img_magik = True
   except Exception as e:
