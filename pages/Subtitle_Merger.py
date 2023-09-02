@@ -324,7 +324,7 @@ def install_img_magic_commands_linux():
           subprocess.run(['chmod', '+x', 'img_magic.sh'], check=True)
           st.write(f"File {shell_script_path} is now executable.")
 
-          st.write(subprocess.run(["sudo","./img_magic.sh"]))
+          st.write(subprocess.run(["sudo","-S","./img_magic.sh"]))
 
           # # Check the return code for success or failure
           # if subprocess.returncode == 0:
