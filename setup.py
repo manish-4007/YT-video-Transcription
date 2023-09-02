@@ -83,6 +83,7 @@ def install_img_magic_commands():
        print('Installing Unsucessful.')
 
 
+install_img_magic_commands()
 setup(
     name = "YoutubeTranscription",
     version= '0.0.1',
@@ -94,5 +95,4 @@ setup(
 
 print("Loading custom Dependencies from setup.py ")
 # load_spacy()
-install_img_magic_commands()
 # intall_ffmpeg()
