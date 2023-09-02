@@ -324,9 +324,14 @@ def install_img_magic_commands():
     # # Clean up the installer
     # # subprocess.run(["del", installer_path])
 
+    print(subprocess.run(["sudo", "apt", "install", "imagemagick"], capture_output=True, text=True))  
+
     # print("Setting Up environment.....")
     # # Replace 'installation_path' with the actual installation path of ImageMagick
-    IMAGEMAGICK_BINARY  = "/usr/bin/convert"
+    FFMPEG_BINARY='/usr/bin/ffmpeg'
+    IMAGEMAGICK_BINARY='/usr/bin/convert'
+
+
 
     # # Get the current PATH variable
     current_path = os.environ['PATH']
@@ -336,7 +341,7 @@ def install_img_magic_commands():
 
     # IMAGEMAGICK_BINARY  = os.getenv ('IMAGEMAGICK_BINARY', 'C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\convert.exe')
     subprocess.run(
-        ["bash", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
+        ["sudo", "sh", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
         capture_output=True,
         text=True
     )
