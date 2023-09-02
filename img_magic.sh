@@ -1,8 +1,6 @@
 #!/bin/bash
-chmod +w /etc/ImageMagick-6/policy.xml
-chmod -R 777  /etc/ImageMagick-6/policy.xml
-chmod -R 777 /root/
-chmod -R 777 ./temp/
+chown appuser /etc/ImageMagick-6/policy.xml
+chmod u+w /etc/ImageMagick-6/policy.xml
 echo "Fetching Done"
 whoami
 cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g' > /etc/ImageMagick-6/policy.xml
