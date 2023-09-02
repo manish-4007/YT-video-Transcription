@@ -218,56 +218,53 @@ def create_caption(textJSON, framesize,v_type,font = "Helvetica",color='white', 
 
   
 def get_final_cliped_video(videofilename, linelevel_subtitles, v_type ):
-    try:
-      input_video = VideoFileClip(videofilename)
-      frame_size = input_video.size
+    
+    input_video = VideoFileClip(videofilename)
+    frame_size = input_video.size
 
-      all_linelevel_splits=[]
+    all_linelevel_splits=[]
 
-      for line in linelevel_subtitles:
-        out_clips,positions = create_caption(line,frame_size,v_type)
+    for line in linelevel_subtitles:
+      out_clips,positions = create_caption(line,frame_size,v_type)
 
-        max_width = 0
-        max_height = 0
+      max_width = 0
+      max_height = 0
 
-        for position in positions:
-          # print (out_clip.pos)
-          # break
-          x_pos, y_pos = position['x_pos'],position['y_pos']
-          width, height = position['width'],position['height']
+      for position in positions:
+        # print (out_clip.pos)
+        # break
+        x_pos, y_pos = position['x_pos'],position['y_pos']
+        width, height = position['width'],position['height']
 
-          max_width = max(max_width, x_pos + width)
-          max_height = max(max_height, y_pos + height)
+        max_width = max(max_width, x_pos + width)
+        max_height = max(max_height, y_pos + height)
 
-        color_clip = ColorClip(size=(int(max_width*1.1), int(max_height*1.1)),
-                            color=(64, 64, 64))
-        color_clip = color_clip.set_opacity(.6)
-        color_clip = color_clip.set_start(line['start']).set_duration(line['end']-line['start'])
+      color_clip = ColorClip(size=(int(max_width*1.1), int(max_height*1.1)),
+                          color=(64, 64, 64))
+      color_clip = color_clip.set_opacity(.6)
+      color_clip = color_clip.set_start(line['start']).set_duration(line['end']-line['start'])
 
-        # centered_clips = [each.set_position('center') for each in out_clips]
+      # centered_clips = [each.set_position('center') for each in out_clips]
 
-        clip_to_overlay = CompositeVideoClip([color_clip]+ out_clips)
-        clip_to_overlay = clip_to_overlay.set_position("bottom")
-
-
-        all_linelevel_splits.append(clip_to_overlay)
-
-      input_video_duration = input_video.duration
+      clip_to_overlay = CompositeVideoClip([color_clip]+ out_clips)
+      clip_to_overlay = clip_to_overlay.set_position("bottom")
 
 
-      final_video = CompositeVideoClip([input_video] + all_linelevel_splits)
+      all_linelevel_splits.append(clip_to_overlay)
 
-      # Set the audio of the final video to be the same as the input video
-      final_video = final_video.set_audio(input_video.audio)
-      st.write(destination, "Updated video")
-      destination = os.path.join(directory,'output.mp4')
-      # Save the final clip as a video file with the audio included
-      final_video.write_videofile(destination, fps=24, codec="libx264", audio_codec="aac")  
-      
-      return destination
+    input_video_duration = input_video.duration
 
-    except Exception as e:
-      st.write('There is an erro:',e)
+
+    final_video = CompositeVideoClip([input_video] + all_linelevel_splits)
+
+    # Set the audio of the final video to be the same as the input video
+    final_video = final_video.set_audio(input_video.audio)
+    st.write(destination, "Updated video")
+    destination = os.path.join(directory,'output.mp4')
+    # Save the final clip as a video file with the audio included
+    final_video.write_videofile(destination, fps=24, codec="libx264", audio_codec="aac")  
+    
+    return destination
 
 
 def add_subtitle (videofilename, audiofilename, v_type):
