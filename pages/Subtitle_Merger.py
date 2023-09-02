@@ -275,14 +275,14 @@ def add_subtitle (videofilename, audiofilename, v_type):
 
   model = st.session_state.whisp_model
   wordlevel_info = transcribe_audio(model,audiofilename)
-  print(wordlevel_info)
+  print("word_level: ",wordlevel_info)
 
   linelevel_subtitles = split_text_into_lines(wordlevel_info, v_type)
-  print (linelevel_subtitles)
+  print ("line_level_subtitles :",linelevel_subtitles)
 
   for line in linelevel_subtitles:
     json_str = json.dumps(line, indent=4)
-    print(json_str)
+    print("whole json: ",json_str)
   outputfile = get_final_cliped_video(videofilename, linelevel_subtitles, v_type )
   return outputfile
 
