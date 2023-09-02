@@ -343,24 +343,24 @@ def install_img_magic_commands():
     os.environ['PATH'] = f"{IMAGEMAGICK_BINARY};{current_path}"
 
     # IMAGEMAGICK_BINARY  = os.getenv ('IMAGEMAGICK_BINARY', 'C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\convert.exe')
-    # subprocess.run(
-    #     ["sudo", "sh", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
-    #     capture_output=True,
-    #     text=True
-    # )
+    subprocess.run(
+        ["sudo", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
+        capture_output=True,
+        text=True
+    )
 
       # Define the policy update command
-    policy_update_command = [
-        'sudo', 'sed', '-i', 's/<rights>none<\/rights>/<rights>read,write<\/rights>/g',
-        '/etc/ImageMagick-6/policy.xml'
-    ]
+    # policy_update_command = [
+    #     'sudo', 'sed', '-i', 's/<rights>none<\/rights>/<rights>read,write<\/rights>/g',
+    #     '/etc/ImageMagick-6/policy.xml'
+    # ]
 
-    # Run the policy update command
-    print(subprocess.run(policy_update_command, capture_output=True, text=True, shell=False))
+    # # Run the policy update command
+    # print(subprocess.run(policy_update_command, capture_output=True, text=True, shell=False))
 
-    # Optionally, restart ImageMagick
-    restart_command = ['sudo', 'service', 'imagemagick', 'restart']
-    print(subprocess.run(restart_command, capture_output=True, text=True, shell=False))
+    # # Optionally, restart ImageMagick
+    # restart_command = ['sudo', 'service', 'imagemagick', 'restart']
+    # print(subprocess.run(restart_command, capture_output=True, text=True, shell=False))
 
 
     install_img_magic_commands_linux()
