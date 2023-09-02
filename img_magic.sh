@@ -1,10 +1,10 @@
 #!/bin/bash
-sudo chmod +w /etc/ImageMagick-6/policy.xml
-sudo chmod -R 777 /etc/ImageMagick-6/policy.xml
-sudo chmod -R 777 /root/
-sudo chmod -R 777 ./temp/
+chmod +w /etc/ImageMagick-6/policy.xml
+chmod u=rwx g=rwx o=rw  /etc/ImageMagick-6/policy.xml
+chmod -R 777 /root/
+chmod -R 777 ./temp/
 echo "Fetching Done"
-sudo -S cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g' > /etc/ImageMagick-6/policy.xml
+cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g' > /etc/ImageMagick-6/policy.xml
 #!/bin/sh
 
 # # Specify the paths to the input and output policy.xml files
