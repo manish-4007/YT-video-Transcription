@@ -540,6 +540,7 @@ try:
                   except Exception as e:
                     
                     outputfile = videofilename
+                    st.write('There is problem while adding subtitles, Showing Original video')
                     st.write('There is an erro:',e)
               else:
                   outputfile = videofilename
