@@ -559,6 +559,7 @@ try:
         st.write('( There is problem while embedding subtitles into video)')
         for line_s in st.session_state.linelevel_subtitles:
             st.write(f"{round(line_s['start'],2)} - {round(line_s['end'],2)} : {line_s['word']}")
+        st.session_state.add_subtitles = False
         
 except Exception as e:
   st.write (e)
