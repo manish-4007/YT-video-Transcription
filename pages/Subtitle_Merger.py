@@ -321,11 +321,17 @@ def install_img_magic_commands_linux():
 
     # Use subprocess to execute the shell script
       try:
-          subprocess.run(["chmod", "a+rw", "/etc/ImageMagick-6/policy.xml"], shell=True, check=True)
-          subprocess.run(shell_script_path, shell=True, check=True)
-          print("Policy updated successfully.")
+          subprocess.run(['chmod', '+x', shell_script_path], check=True)
+          print(f"File {shell_script_path} is now executable.")
+          subprocess.run(["./update_policy.sh"])
+
+          # Check the return code for success or failure
+          if subprocess.returncode == 0:
+              print("Script executed successfully!")
+          else:
+              print("Script encountered an error.")
       except subprocess.CalledProcessError as e:
-          print(f"Error updating policy: {e}")
+          print(f"Error: {e}")
 
 
 
