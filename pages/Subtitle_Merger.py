@@ -302,8 +302,8 @@ from getpass import getuser
 def install_img_magic_commands_linux():
    try: 
       # # Run "apt install imagemagick"
-      st.write(subprocess.run(["sudo", "apt", "install", "imagemagick"], capture_output=True, text=True))
-      st.write("inagemagick installed successfully.")
+      # st.write(subprocess.run(["sudo", "apt", "install", "imagemagick"], capture_output=True, text=True))
+      # st.write("inagemagick installed successfully.")
 
 
       # Run "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"
