@@ -64,16 +64,16 @@ def install_img_magic_commands():
     try:
         print('Installing Imagemagick dependencies ............')
         # # Run "apt install imagemagick"
-        print(subprocess.run(["sudo", "apt", "install", "imagemagick"], capture_output=True, text=True))
+        subprocess.run(["sudo", "apt", "install", "imagemagick"], capture_output=True, text=True)
         print("Imagemagick installed successfully.")
 
 
         # Run "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"
-        print(subprocess.run(
+        subprocess.run(
             ["sudo","-S", "sh", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
             capture_output=True,
             text=True
-        ))
+        )
         
         print("Policy update on imageMagick executed successfully.")
         
