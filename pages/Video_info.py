@@ -11,6 +11,7 @@ from spacy import displacy
 
 from src.youtube_audio import text_translator
 from src.video_analyzer import summarize
+from transformers import pipeline
 
 
 languages_coded={"": "",
@@ -172,6 +173,40 @@ def show_text():
         yield word + " "
         time.sleep(0.05)
 
+@st.cache_resource
+def load_topic_transfomers():
+    print('Loading the TOPIC Modelling Model into the App............')
+    try:
+        topic_classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli",device="cuda", compute_type="float16")
+    except Exception as e:
+        topic_classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
+        print("Error: ", e)
+
+    st.success("Loaded Topic Modeller!")
+    return topic_classifier
+
+def suggest_topic(text):
+
+    while len(text)> 1024:
+        text = summarize(text[:-10])
+
+    possible_topics = ["Gadgets", 'Business','Finance', 'Health', 'Sports',  'Politics','Government','Science','Education', 'Travel', 'Tourism', 'Finance & Economics','Market','Technology','Scientific Discovery',
+                      'Entertainment','Environment','News & Media' "Space,Universe & Cosmos", "Fashion", "Manufacturing and Constructions","Law & Crime","Motivation", "Development & Socialization",  "Archeology"]
+                      
+    result = topic_classifier(text, possible_topics)
+    predicted_topic =result['labels'][:5]
+
+    # Adding suggested keywords into existing keyword of a youtube video
+    data = st.session_state.video_info
+    a= data['keywords']
+    predicted_topic.extend(a)
+
+    # Updating the keywords into the session state
+    st.session_state.video_info['keywords'] = predicted_topic
+
+    # return predicted_topic
+
+
 
 def show_hompage(key_1 ="reload",key_2 = 'Home'):
         
@@ -192,6 +227,15 @@ try:
 
     yt_url = st.session_state.video
     yt = YouTube (yt_url)
+
+
+    if 'topic_modeller' not in st.session_state:
+        print("Loading topic modeller into session_state for topic suggestion...")
+        
+        topic_classifier = load_topic_transfomers()
+        st.session_state.topic_modeller = topic_classifier
+        
+        st.success('Topic Modeller Transformer Loaded.')
 
     if 'nlp' not in st.session_state:
         
@@ -227,12 +271,22 @@ try:
     # st.session_state.text_summ = summarize(whole_text)
 
 
+
     if st.session_state.text_summ == a and st.session_state.text_summ is not None:
         st.write(a)
+        with st.spinner("Finding Topics related to the Video......"):
+            suggest_topic(whole_text)
+            st.success('Topic Generated.')
+            
     else:
         write(show_text)
         st.session_state.text_summ = a
     
+    st.subheader('Topics which is related to the Video Content ')
+    topics = st.session_state.video_info['keywords']
+    # st.write(", ".join(topics))
+    st.write(topics)
+
     tabs = st.tabs(['Description','Name Entity Recognition - (NER)'])
     with tabs[0]:
         stoggle(f'Source Subtile Text ( in {st.session_state.src_language} )', st.session_state.transcribed_src_text)
