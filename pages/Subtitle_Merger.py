@@ -548,7 +548,7 @@ try:
               st.session_state.outputfile_path = outputfile
               st.success('Video Created')
           except Exception as e:
-             st.write('There is an erro:',e)
+             st.write('There is an error, please refresh the page or upload other video:',e)
         
       if 'outputfile_path'  in st.session_state and st.session_state.outputfile_path is not None:
         show_audio_video(st.session_state.audio,st.session_state.outputfile_path)
