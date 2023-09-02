@@ -172,6 +172,22 @@ def show_text():
         yield word + " "
         time.sleep(0.05)
 
+
+def show_hompage(key_1 ="reload",key_2 = 'Home'):
+        
+    cols = st.columns(5)
+    with cols[0]:
+        if st.button('🔄️ Reload', key= key_1):
+            st.session_state.clear()
+            st.experimental_rerun()
+
+    with cols[4]:
+        if st.button('🏠 Home Page', key= key_2):
+            st.session_state.clear()
+            switch_page('Home')
+        
+show_hompage()
+
 try:
 
     yt_url = st.session_state.video
@@ -270,7 +286,7 @@ try:
                 else:
                     st.write(f" {key} - [ {value[0]} - {value[1]} ]   :   {text_translator(st.session_state.transcribed_src_dict[key], subtitle_lang)[1]}")
 
-    if st.button("back to home"):
+    if st.button("back to Transcription Page"):
         st.session_state.clear()
         switch_page('Transcripter')
 
@@ -281,5 +297,4 @@ except Exception as e:
         st.session_state.clear()
         switch_page('Transcripter')
 
-
-        
+show_hompage('trans_videoinf_reload_key','trans_videoinf_hm_key')

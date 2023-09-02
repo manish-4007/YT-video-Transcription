@@ -163,7 +163,7 @@ else:
 if "dependencies" not in st.session_state:
     st.session_state.dependencies = True 
     try:
-        load_spacy()
+        # load_spacy()
         set_ffmpeg()
         # intall_ffmpeg()
     except Exception as e:
