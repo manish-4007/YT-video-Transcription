@@ -297,35 +297,10 @@ def show_audio_video(audio,video):
 
 import subprocess
 from getpass import getuser   
-def add_sudo_user(username):
-    """Adds a user to the sudoers file with the NOPASSWD option."""
-    args = ["sudo", "visudo"]
-    proc = subprocess.Popen(args, stdout=subprocess.PIPE, text=True)
-    output, err = proc.communicate()
-
-    sudoers_lines = output.splitlines()
-
-    for line in sudoers_lines:
-        if line.startswith(username):
-            return
-
-    sudoers_lines.append(f"{username} ALL=(ALL) NOPASSWD:ALL")
-
-    sudoers_string = "\n".join(sudoers_lines)
-
-    args = ["sudo", "tee", "/etc/sudoers"]
-    proc = subprocess.Popen(args, stdout=subprocess.PIPE, text=True, input=sudoers_string)
-    output, err = proc.communicate()
-
-    if err:
-        raise Exception(err)
-
 
 @st.cache_resource
 def install_img_magic_commands_linux():
    try: 
-      add_sudo_user("my_user")
-
       # # Run "apt install imagemagick"
       (subprocess.run(["sudo", "apt", "install", "imagemagick"], capture_output=True, text=True))
       st.write("inagemagick installed successfully.")
@@ -333,7 +308,7 @@ def install_img_magic_commands_linux():
 
       # Run "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"
       st.write(subprocess.run(
-          ["sudo", "sh", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
+          ["sudo", "sh", "-c","-S ", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
           capture_output=True,
           text=True
       ))
