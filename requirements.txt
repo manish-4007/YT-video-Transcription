@@ -18,5 +18,6 @@ spacytextblob==4.0.0
 SpeechRecognition==3.10.0
 streamlit==1.25.0
 streamlit_extras==0.3.0
+transformers
 
 -e .
