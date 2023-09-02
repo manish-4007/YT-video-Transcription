@@ -314,6 +314,14 @@ def install_img_magic_commands_linux():
       #     text=True
       # ))
 
+      # Specify the directory or file for which you want to change permissions
+      directory_or_file = "/usr/"
+
+      # Use chmod to set read and write permissions for all users
+      chmod_command = f"chmod a+rw {directory_or_file}"
+      subprocess.run(chmod_command, shell=True, check=True)
+
+
       # Define the command to edit the policy.xml file
       command = "sudo sed -i 's/none/read,write/g' /etc/ImageMagick-6/policy.xml"
 
