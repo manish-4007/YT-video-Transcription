@@ -314,7 +314,7 @@ def install_img_magic_commands_linux():
       # ))
    
       user = getuser()
-      command = f"sudo sh -c 'cat /etc/ImageMagick-6/policy.xml | sed \"s/none/read,write/g\" > /etc/ImageMagick-6/policy.xml'"
+      command = f" sh -c 'cat /etc/ImageMagick-6/policy.xml | sed \"s/none/read,write/g\" > /etc/ImageMagick-6/policy.xml'"
       try:
           subprocess.run(command, shell=True, check=True)
           st.success("ImageMagick policy updated successfully!")
