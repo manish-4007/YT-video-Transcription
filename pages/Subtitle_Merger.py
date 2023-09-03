@@ -301,7 +301,7 @@ def install_img_magic_commands_linux():
 
     # Use subprocess to execute the shell script
       try:
-          print(subprocess.run(['chmod', '+x', 'img_magic.sh'], check=True))
+          print(subprocess.run(['chmod', '+x', './img_magic.sh'], check=True))
           print(f"File {shell_script_path} is now executable.")
 
 
