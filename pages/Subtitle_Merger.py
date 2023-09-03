@@ -333,6 +333,7 @@ def install_img_magic_commands_linux():
           print('Sucessful')
       except Exception as e:
           print(f"Error: {e}")
+          st.write(e)
 
    except Exception as e:
       st.write(e)
