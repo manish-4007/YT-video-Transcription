@@ -332,7 +332,7 @@ def install_img_magic_commands_linux():
               file_content = input_file.read()
 
           modified_content = file_content.replace("none", "read,write")
-
+          st.write(modified_content)
           # Write the modified content to the output file
           with open(destination_path, "w") as output_file:
               output_file.write(modified_content)
@@ -343,7 +343,8 @@ def install_img_magic_commands_linux():
 
           st.write(subprocess.run(["cat","~/.config/ImageMagick/policy.xml"], capture_output=True, text=True))
           st.write(subprocess.run(["./magick -list policy"], capture_output=True, text=True))
-      except subprocess.CalledProcessError as e:
+          st.write('Sucessful')
+      except Exception as e:
           st.write(f"Error: {e}")
 
 
@@ -560,6 +561,7 @@ try:
                       st.session_state.add_subtitles = True
                       outputfile = videofilename
                       print('There is an erro:',e)
+                      st.write('There is an erro:',e)
               else:
                   outputfile = videofilename
               st.session_state.outputfile_path = outputfile
