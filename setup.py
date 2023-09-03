@@ -114,4 +114,4 @@ setup(
 print("Loading custom Dependencies from setup.py ")
 load_spacy()
 intall_ffmpeg()
-imgmagick_env_setup_app()
+# imgmagick_env_setup_app()
