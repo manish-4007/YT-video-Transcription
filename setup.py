@@ -57,6 +57,50 @@ def intall_ffmpeg():
        print('Error :', e)
        print('Installing Unsucessful.')
 
+def imgmagick_env_setup_app():
+   
+    try: 
+        print('Setting up the imgmagick environment setup.....')
+        shell_script_path = "./img_magic.sh"
+
+    # Use subprocess to execute the shell script
+        try:
+            print(subprocess.run(['chmod', '+x', 'img_magic.sh'], check=True))
+            print(f"File {shell_script_path} is now executable.")
+            print(subprocess.run(["./img_magic.sh"]))
+
+            print('adding custom policy.....')
+            source_path = "/etc/ImageMagick-6/policy.xml"
+            destination_path = "~/.config/ImageMagick/policy.xml"
+            destination_path = os.path.expanduser(destination_path)
+                    
+            # Read the content of the input file  
+            with open(source_path, "r") as input_file:
+                file_content = input_file.read()
+
+            modified_content = file_content.replace("none", "read,write")
+            
+            # Write the modified content to the output file
+            with open(destination_path, "w") as output_file:
+                output_file.write(modified_content)
+            
+            with open(destination_path, "r") as input_file:
+                file_content = input_file.read()
+
+            # st.write(subprocess.run(["cat","~/.config/ImageMagick/policy.xml"], capture_output=True, text=True))
+            # st.write(subprocess.run(["magick", "-list", "policy"], capture_output=True, text=True))
+            print('Checking all the policies which are in the environment.....')
+            print(subprocess.run(["convert", "-list", "policy"], capture_output=True, text=True))
+            print('Sucessful')
+        except Exception as e:
+            print(f"Error: {e}")
+            print('Setup usucessfully')
+
+    except Exception as e:
+        print(e)
+        print('Setup usucessfully')
+
+    print('All Setup for the image-Magick is done sucessfully')
 
 setup(
     name = "YoutubeTranscription",
@@ -70,3 +114,4 @@ setup(
 print("Loading custom Dependencies from setup.py ")
 load_spacy()
 intall_ffmpeg()
+imgmagick_env_setup_app()
