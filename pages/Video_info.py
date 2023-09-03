@@ -13,6 +13,12 @@ from src.youtube_audio import text_translator
 from src.video_analyzer import summarize
 from transformers import pipeline
 
+from dotenv import load_dotenv
+import os
+# Load environment variables from the .env file
+load_dotenv()
+# st.write(st.session_state)
+dev_key = os.getenv("HUGGING_API_KEY")
 
 languages_coded={"": "",
                   "Hindi" :	"hi-IN" ,
