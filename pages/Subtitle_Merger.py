@@ -294,56 +294,56 @@ def show_audio_video(audiofilename,videofilename):
 import subprocess
 from getpass import getuser   
 
-# @st.cache_resource
-# def install_img_magic_commands_linux():
-#    try: 
-#       shell_script_path = "./img_magic.sh"
+@st.cache_resource
+def install_img_magic_commands_linux():
+   try: 
+      shell_script_path = "./img_magic.sh"
 
-#     # Use subprocess to execute the shell script
-#       try:
-#           print(subprocess.run(['chmod', '+x', 'img_magic.sh'], check=True))
-#           print(f"File {shell_script_path} is now executable.")
+    # Use subprocess to execute the shell script
+      try:
+          print(subprocess.run(['chmod', '+x', 'img_magic.sh'], check=True))
+          print(f"File {shell_script_path} is now executable.")
 
-#           print(subprocess.run(['mkdir', '-p', '~/.config/ImageMagick'], check=True)) 
-#           print("Directory Created .config/ImageMagick")
-#           print(subprocess.run(['chmod', '+w', '~/.config/ImageMagick'], check=True)) 
-#           print("permission give as write to .config/ImageMagick")
+          print(subprocess.run(['mkdir', '-p', '~/.config/ImageMagick'], check=True)) 
+          print("Directory Created .config/ImageMagick")
+          print(subprocess.run(['chmod', '+w', '~/.config/ImageMagick'], check=True)) 
+          print("permission give as write to .config/ImageMagick")
           
-#           # print(subprocess.run(["./img_magic.sh"]), capture_output=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-#           source_path = "/etc/ImageMagick-6/policy.xml"
-#           destination_path = "~/.config/ImageMagick/policy.xml"
-#           destination_path = os.path.expanduser(destination_path)
+          # print(subprocess.run(["./img_magic.sh"]), capture_output=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+          source_path = "/etc/ImageMagick-6/policy.xml"
+          destination_path = "~/.config/ImageMagick/policy.xml"
+          destination_path = os.path.expanduser(destination_path)
           
-#           # Check if the destination directory exists, and create it if not
-#           destination_dir = os.path.dirname(destination_path)
-#           if not os.path.exists(destination_dir):
-#               os.makedirs(destination_dir)
+          # Check if the destination directory exists, and create it if not
+          destination_dir = os.path.dirname(destination_path)
+          if not os.path.exists(destination_dir):
+              os.makedirs(destination_dir)
+                        
+          # Read the content of the input file  
+          with open(source_path, "r") as input_file:
+              file_content = input_file.read()
 
-#           # Read the content of the input file  
-#           with open(source_path, "r") as input_file:
-#               file_content = input_file.read()
-
-#           modified_content = file_content.replace("none", "read,write")
-#           st.write(modified_content)
-#           # Write the modified content to the output file
-#           with open(destination_path, "w+") as output_file:
-#               output_file.write(modified_content)
-#           st.write(output_file)
+          modified_content = file_content.replace("none", "read,write")
+          st.write(modified_content)
+          # Write the modified content to the output file
+          with open(destination_path, "w+") as output_file:
+              output_file.write(modified_content)
+          st.write(output_file)
           
-#           with open(destination_path, "r") as input_file:
-#               file_content = input_file.read()
+          with open(destination_path, "r") as input_file:
+              file_content = input_file.read()
         
-#           st.write(file_content)
-#           # st.write(subprocess.run(["cat","~/.config/ImageMagick/policy.xml"] text=True))
-#           # st.write(subprocess.run(["magick", "-list", "policy"], capture_output=True, text=True))
-#           print(subprocess.run(["convert", "-list", "policy"], capture_output=True, text=True))
-#           print('Sucessful')
-#       except Exception as e:
-#           print(f"Error: {e}")
-#           st.write(e)
+          st.write(file_content)
+          # st.write(subprocess.run(["cat","~/.config/ImageMagick/policy.xml"] text=True))
+          # st.write(subprocess.run(["magick", "-list", "policy"], capture_output=True, text=True))
+          print(subprocess.run(["convert", "-list", "policy"], capture_output=True, text=True))
+          print('Sucessful')
+      except Exception as e:
+          print(f"Error: {e}")
+          st.write(e)
 
-#    except Exception as e:
-#       st.write(e)
+   except Exception as e:
+      st.write(e)
 
 
 @st.cache_resource()
@@ -394,7 +394,7 @@ def install_img_magic_commands():
     #     text=True
     # )
     try:
-      # install_img_magic_commands_linux()
+      install_img_magic_commands_linux()
       print("All Set-up completed...")
     except Exception as e:
        st.wrie(e)
@@ -444,7 +444,7 @@ if 'whisp_model' not in st.session_state:
   print("Downloading dependecies...")
 
   try:
-    #  install_img_magic_commands_linux()  
+     install_img_magic_commands_linux()  
      print("Dependencise for video editing downloaded successfully.")
      st.session_state.img_magik = True
   except Exception as e:
