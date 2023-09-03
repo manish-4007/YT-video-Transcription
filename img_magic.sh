@@ -23,3 +23,15 @@
 # # Optionally, display a message indicating the operation was successful
 # echo "Policy.xml file updated successfully!"
 
+
+rpm -Uvh ImageMagick-7.1.1-15.x86_64.rpm
+rpm -Uvh ImageMagick-libs-7.1.1-15.x86_64.rpm
+cd $HOME
+tar xvzf ImageMagick.tar.gz
+$ export MAGICK_HOME="$HOME/ImageMagick-7.1.1"
+export PATH="$MAGICK_HOME/bin:$PATH
+LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}$MAGICK_HOME/lib
+export LD_LIBRARY_PATH
+magick logo: logo.gif
+identify logo.gif
+display logo.gif
