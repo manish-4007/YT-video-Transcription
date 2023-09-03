@@ -325,7 +325,7 @@ def install_img_magic_commands_linux():
 
           source_path = "/etc/ImageMagick-6/policy.xml"
           destination_path = "~/.config/ImageMagick/policy.xml"
-          output_file_path = os.path.expanduser(destination_path)
+          destination_path = os.path.expanduser(destination_path)
                     
           # Read the content of the input file  
           with open(source_path, "r") as input_file:
