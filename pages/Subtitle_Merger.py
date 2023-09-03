@@ -325,6 +325,7 @@ def install_img_magic_commands_linux():
 
           source_path = "/etc/ImageMagick-6/policy.xml"
           destination_path = "~/.config/ImageMagick/policy.xml"
+          output_file_path = os.path.expanduser(destination_path)
                     
           # Read the content of the input file  
           with open(source_path, "r") as input_file:
@@ -333,7 +334,7 @@ def install_img_magic_commands_linux():
           modified_content = file_content.replace("none", "read,write")
 
           # Write the modified content to the output file
-          with open(destination_path, "w") as output_file:
+          with open(destination_path, "w+") as output_file:
               output_file.write(modified_content)
 
           st.write(subprocess.run(["./img_magic.sh"]))
