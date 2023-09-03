@@ -324,18 +324,17 @@ def install_img_magic_commands_linux():
               file_content = input_file.read()
 
           modified_content = file_content.replace("none", "read,write")
-          st.write(modified_content)
+          
           # Write the modified content to the output file
           with open(destination_path, "w+") as output_file:
               output_file.write(modified_content)
-          st.write(output_file)
+              
           
           with open(destination_path, "r") as input_file:
               file_content = input_file.read()
         
-          st.write(file_content)
+          print(file_content)
           # st.write(subprocess.run(["cat","~/.config/ImageMagick/policy.xml"] text=True))
-          # st.write(subprocess.run(["magick", "-list", "policy"], capture_output=True, text=True))
           print(subprocess.run(["convert", "-list", "policy"], capture_output=True, text=True))
           print('Sucessful')
       except Exception as e:
@@ -345,59 +344,6 @@ def install_img_magic_commands_linux():
    except Exception as e:
       st.write(e)
 
-
-@st.cache_resource()
-def install_img_magic_commands():
-    # # Replace 'download_link' with the actual download link of the ImageMagick installer
-    # download_link = "https://imagemagick.org/archive/binaries/ImageMagick-7.1.1-15-Q16-HDRI-x64-dll.exe"
-    # installer_path = "ImageMagickInstaller.exe"
-
-    # # Download the installer
-    # print("Downloding the installer......")
-    # # subprocess.run(["curl", "-o", installer_path, download_link])
-
-    # # Run the installer
-    # print("Running the installer......")
-    # # subprocess.run([installer_path])
-
-    # # Clean up the installer
-    # # subprocess.run(["del", installer_path])
-
-    print(subprocess.run(["sudo", "apt", "install", "imagemagick"], capture_output=True, text=True))  
-
-    # print("Setting Up environment.....")
-    # # Replace 'installation_path' with the actual installation path of ImageMagick
-    FFMPEG_BINARY='/usr/bin/ffmpeg'
-    IMAGEMAGICK_BINARY='/usr/bin/convert'
-
-    # import moviepy.editor as mp
-
-    # Set the path to the ImageMagick binary (replace '/usr/bin/convert' with your actual path)
-    # mp.config.change_settings(imagemagick_binary=IMAGEMAGICK_BINARY)
-
-    # # Get the current PATH variable
-    current_path = os.environ['PATH']
-
-    # # Add ImageMagick installation directory to PATH
-    os.environ['PATH'] = f"{IMAGEMAGICK_BINARY};{current_path}"
-
-    # IMAGEMAGICK_BINARY  = os.getenv ('IMAGEMAGICK_BINARY', 'C:\Program Files\ImageMagick-7.1.1-Q16-HDRI\convert.exe')
-    
-    # Run "apt install imagemagick"
-    # subprocess.run(["sudo", "apt", "install", "imagemagick"], capture_output=True, text=True)
-    st.write("inagemagick installed successfully.")
-
-    # Run "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"
-    # subprocess.run(
-    #     ["sudo", "sh", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
-    #     capture_output=True,
-    #     text=True
-    # )
-    try:
-      install_img_magic_commands_linux()
-      print("All Set-up completed...")
-    except Exception as e:
-       st.wrie(e)
 
 @st.cache_resource
 def load_model():
@@ -448,7 +394,7 @@ if 'whisp_model' not in st.session_state:
      print("Dependencise for video editing downloaded successfully.")
      st.session_state.img_magik = True
   except Exception as e:
-      st.write('Some Errors ocurred while loading: ', e)
+      print('Some Errors ocurred while loading: ', e)
 
   model = load_model()
   st.session_state.whisp_model = model
@@ -542,7 +488,7 @@ try:
                   except Exception as e:
                       outputfile = videofilename
                       print('There is an erro:',e)
-                      st.write('There is an erro:',e)
+                      
                   st.session_state.add_subtitles = True
               else:
                   outputfile = videofilename
@@ -563,7 +509,7 @@ try:
           st.session_state.add_subtitles = False
         
 except Exception as e:
-  st.write (e)
+  print(e)
 
 if st.session_state.edit:
   show_hompage(key_1='sub_mer_rel', key_2='sub_mer_hm')
