@@ -153,6 +153,10 @@ def install_img_magic_commands_linux():
       print(e)
 
 
+print("Loading custom Dependencies from setup.py ")
+load_spacy()
+intall_ffmpeg()
+install_img_magic_commands_linux()
 setup(
     name = "YoutubeTranscription",
     version= '0.0.1',
@@ -161,8 +165,3 @@ setup(
     install_requires = get_requirements('requirements.txt'),
     packages= find_packages(),
 )
-
-print("Loading custom Dependencies from setup.py ")
-load_spacy()
-intall_ffmpeg()
-install_img_magic_commands_linux()
