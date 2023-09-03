@@ -429,7 +429,7 @@ try:
       
       st.session_state.videofile_path = videofilename
       st.session_state.audio = None
-
+      
   if clip_sbtitle:
       video_file = None
       download_video(video_url)
@@ -437,14 +437,16 @@ try:
       st.session_state.videofile_path = videofilename
       st.session_state.audio = None
       
+      if 'outputfile_path'  in st.session_state and st.session_state.outputfile_path is not None:
+        st.session_state.outputfile_path = None
     
   if "edit" not in st.session_state:
     st.session_state.edit = False
 
   if video_file or video_url:
       
-      if 'outputfile_path'  in st.session_state and st.session_state.outputfile_path is not None:
-        st.session_state.outputfile_path = None
+      # if 'outputfile_path'  in st.session_state and st.session_state.outputfile_path is not None:
+      #   st.session_state.outputfile_path = None
     
       videofilename = st.session_state.videofile_path
       st.write("Title :", videofilename.split('\\')[-1])
@@ -488,6 +490,7 @@ try:
                   except Exception as e:
                       outputfile = videofilename
                       print('There is an erro:',e)
+                      st.session_state.add_subtitles = False
                       
                   st.session_state.add_subtitles = True
               else:
@@ -500,16 +503,17 @@ try:
       if 'outputfile_path'  in st.session_state and st.session_state.outputfile_path is not None:
         show_audio_video(st.session_state.audio,st.session_state.outputfile_path)
         
-      if 'add_subtitles'  in st.session_state and st.session_state.add_subtitles is True:
-        if st.checkbox("Subtitle"):
-          st.subheader('Generated Subtile for the video :')
-          st.write('( There is problem while embedding subtitles into video)')
-          for line_s in st.session_state.linelevel_subtitles:
-              st.write(f"{round(line_s['start'],2)} - {round(line_s['end'],2)} : {line_s['word']}")
-          st.session_state.add_subtitles = False
+  # if 'add_subtitles'  in st.session_state and st.session_state.add_subtitles is True:
+  #     st.session_state.add_subtitles = False
         
 except Exception as e:
   print(e)
 
 if st.session_state.edit:
+  if 'add_subtitles'  in st.session_state:
+    if st.checkbox("Subtitle"):
+      st.subheader('Generated Subtile for the video :')
+      st.write('( There is problem while embedding subtitles into video)')
+      for line_s in st.session_state.linelevel_subtitles:
+          st.write(f"{round(line_s['start'],2)} - {round(line_s['end'],2)} : {line_s['word']}")
   show_hompage(key_1='sub_mer_rel', key_2='sub_mer_hm')
