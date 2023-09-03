@@ -388,7 +388,7 @@ def install_img_magic_commands():
     
     # Run "apt install imagemagick"
     # subprocess.run(["sudo", "apt", "install", "imagemagick"], capture_output=True, text=True)
-    print("inagemagick installed successfully.")
+    st.write("inagemagick installed successfully.")
 
     # Run "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"
     # subprocess.run(

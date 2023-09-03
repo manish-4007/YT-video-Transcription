@@ -28,7 +28,8 @@ rpm -Uvh ImageMagick-7.1.1-15.x86_64.rpm
 rpm -Uvh ImageMagick-libs-7.1.1-15.x86_64.rpm
 cd $HOME
 tar xvzf ImageMagick.tar.gz
-$ export MAGICK_HOME="$HOME/ImageMagick-7.1.1"
+echo "Fetching Done"
+export MAGICK_HOME="$HOME/ImageMagick-7.1.1"
 export PATH="$MAGICK_HOME/bin:$PATH
 LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}$MAGICK_HOME/lib
 export LD_LIBRARY_PATH
