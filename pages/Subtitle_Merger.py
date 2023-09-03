@@ -341,7 +341,7 @@ def install_img_magic_commands_linux():
               file_content = input_file.read()
 
           # st.write(subprocess.run(["cat","~/.config/ImageMagick/policy.xml"], capture_output=True, text=True))
-          st.write(subprocess.run(["magick", "-list", "policy"], capture_output=True, text=True))
+          # st.write(subprocess.run(["magick", "-list", "policy"], capture_output=True, text=True))
           st.write(subprocess.run(["convert", "-list", "policy"], capture_output=True, text=True))
           st.write('Sucessful')
       except Exception as e:
@@ -558,10 +558,10 @@ try:
                       outputfile = add_subtitle(videofilename, audiofilename, v_type)
                     
                   except Exception as e:
-                      st.session_state.add_subtitles = True
                       outputfile = videofilename
                       print('There is an erro:',e)
                       st.write('There is an erro:',e)
+                  st.session_state.add_subtitles = True
               else:
                   outputfile = videofilename
               st.session_state.outputfile_path = outputfile
@@ -573,11 +573,12 @@ try:
         show_audio_video(st.session_state.audio,st.session_state.outputfile_path)
         
       if 'add_subtitles'  in st.session_state and st.session_state.add_subtitles is True:
-        st.subheader('Generated Subtile for the video :')
-        st.write('( There is problem while embedding subtitles into video)')
-        for line_s in st.session_state.linelevel_subtitles:
-            st.write(f"{round(line_s['start'],2)} - {round(line_s['end'],2)} : {line_s['word']}")
-        st.session_state.add_subtitles = False
+        if st.checkbox("Subtitle"):
+          st.subheader('Generated Subtile for the video :')
+          st.write('( There is problem while embedding subtitles into video)')
+          for line_s in st.session_state.linelevel_subtitles:
+              st.write(f"{round(line_s['start'],2)} - {round(line_s['end'],2)} : {line_s['word']}")
+          st.session_state.add_subtitles = False
         
 except Exception as e:
   st.write (e)
