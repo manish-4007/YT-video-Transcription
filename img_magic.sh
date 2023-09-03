@@ -26,9 +26,15 @@
 # cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g' > custom_policy.xml
 # cp custom_policy.xml  ~/.config/ImageMagick/policy.xml
 # cat custom_policy.xml
+ls -al /home/appuser/.config/ImageMagick
+mkdir -p /home/appuser/.config/ImageMagick
+chmod +r /etc/ImageMagick-6/policy.xml
+chmod +w /home/appuser/.config/ImageMagick/policy.xml
+
+
 ./magick -list policy
 
-cat ~/.config/ImageMagick/policy.xml
+# cat ~/.config/ImageMagick/policy.xml
 # <policymap>
 #     <policy domain="coder" rights="read|write" pattern="HTTP" />
 # </policymap>
