@@ -28,11 +28,11 @@
 # cat custom_policy.xml
 
 mkdir -p /home/appuser/.config/ImageMagick
-chmod +r /etc/ImageMagick-6/policy.xml
-chmod +w /home/appuser/.config/ImageMagick/policy.xml
+# chmod +r /etc/ImageMagick-6/policy.xml
+# chmod +w /home/appuser/.config/ImageMagick/policy.xml
 
 
-./magick -list policy
+# ./magick -list policy
 
 # cat ~/.config/ImageMagick/policy.xml
 # <policymap>
