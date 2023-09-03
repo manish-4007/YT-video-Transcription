@@ -25,7 +25,7 @@
 
 # cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g' > custom_policy.xml
 # cp custom_policy.xml  ~/.config/ImageMagick/policy.xml
-cat ~/.config/ImageMagick/policy.xml
+# cat custom_policy.xml
 ./magick -list policy
 
 cat ~/.config/ImageMagick/policy.xml
