@@ -29,7 +29,7 @@
 # chmod +w /etc/ImageMagick-6/policy.xml
 mkdir -p ~/.config/ImageMagick
 chmod +w ~/.config/ImageMagick
-chmod +r /etc/ImageMagick-6/policy.xml
+# chmod +r /etc/ImageMagick-6/policy.xml
 # chmod +w /home/appuser/.config/ImageMagick/policy.xml
 
 
