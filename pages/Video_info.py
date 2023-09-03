@@ -13,27 +13,6 @@ from src.youtube_audio import text_translator
 from src.video_analyzer import summarize
 from transformers import pipeline
 
-from dotenv import load_dotenv
-import os
-# Load environment variables from the .env file
-load_dotenv()
-# st.write(st.session_state)
-dev_key = os.getenv("HUGGING_API_KEY")
-
-import requests
-
-API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-mnli"
-headers = {f"Authorization": "Bearer {dev_key}"}
-
-def query(payload):
-	response = requests.post(API_URL, headers=headers, json=payload)
-	return response.json()
-
-output = query({
-    "inputs": "Hi, I recently bought a device from your company but it is not working as advertised and I would like to get reimbursed!",
-    "parameters": {"candidate_labels": ["refund", "legal", "faq"]},
-})
-
 
 languages_coded={"": "",
                   "Hindi" :	"hi-IN" ,
@@ -194,38 +173,38 @@ def show_text():
         yield word + " "
         time.sleep(0.05)
 
-@st.cache_resource
-def load_topic_transfomers():
-    print('Loading the TOPIC Modelling Model into the App............')
-    try:
-        topic_classifier = pipeline("zero-shot-classification",device="cuda")
-    except Exception as e:
-        topic_classifier = pipeline("zero-shot-classification")
-        print("Error: ", e)
+# @st.cache_resource
+# def load_topic_transfomers():
+#     print('Loading the TOPIC Modelling Model into the App............')
+#     try:
+#         topic_classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli",device="cuda", compute_type="float16")
+#     except Exception as e:
+#         topic_classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
+#         print("Error: ", e)
 
-    st.success("Loaded Topic Modeller!")
-    return topic_classifier
+#     st.success("Loaded Topic Modeller!")
+#     return topic_classifier
 
-def suggest_topic(text):
+# def suggest_topic(text):
 
-    while len(text)> 1024:
-        text = summarize(text[:-10])
+#     while len(text)> 1024:
+#         text = summarize(text[:-10])
 
-    possible_topics = ["Gadgets", 'Business','Finance', 'Health', 'Sports',  'Politics','Government','Science','Education', 'Travel', 'Tourism', 'Finance & Economics','Market','Technology','Scientific Discovery',
-                      'Entertainment','Environment','News & Media' "Space,Universe & Cosmos", "Fashion", "Manufacturing and Constructions","Law & Crime","Motivation", "Development & Socialization",  "Archeology"]
+#     possible_topics = ["Gadgets", 'Business','Finance', 'Health', 'Sports',  'Politics','Government','Science','Education', 'Travel', 'Tourism', 'Finance & Economics','Market','Technology','Scientific Discovery',
+#                       'Entertainment','Environment','News & Media' "Space,Universe & Cosmos", "Fashion", "Manufacturing and Constructions","Law & Crime","Motivation", "Development & Socialization",  "Archeology"]
                       
-    result = topic_classifier(text, possible_topics)
-    predicted_topic =result['labels'][:5]
+#     result = topic_classifier(text, possible_topics)
+#     predicted_topic =result['labels'][:5]
 
-    # Adding suggested keywords into existing keyword of a youtube video
-    data = st.session_state.video_info
-    a= data['keywords']
-    predicted_topic.extend(a)
+#     # Adding suggested keywords into existing keyword of a youtube video
+#     data = st.session_state.video_info
+#     a= data['keywords']
+#     predicted_topic.extend(a)
 
-    # Updating the keywords into the session state
-    st.session_state.video_info['keywords'] = predicted_topic
+#     # Updating the keywords into the session state
+#     st.session_state.video_info['keywords'] = predicted_topic
 
-    # return predicted_topic
+#     # return predicted_topic
 
 
 
@@ -250,13 +229,13 @@ try:
     yt = YouTube (yt_url)
 
 
-    if 'topic_modeller' not in st.session_state:
-        print("Loading topic modeller into session_state for topic suggestion...")
+    # if 'topic_modeller' not in st.session_state:
+    #     print("Loading topic modeller into session_state for topic suggestion...")
         
-        topic_classifier = load_topic_transfomers()
-        st.session_state.topic_modeller = topic_classifier
+    #     topic_classifier = load_topic_transfomers()
+    #     st.session_state.topic_modeller = topic_classifier
         
-        st.success('Topic Modeller Transformer Loaded.')
+    #     st.success('Topic Modeller Transformer Loaded.')
 
     if 'nlp' not in st.session_state:
         
@@ -295,18 +274,18 @@ try:
 
     if st.session_state.text_summ == a and st.session_state.text_summ is not None:
         st.write(a)
-        with st.spinner("Finding Topics related to the Video......"):
-            suggest_topic(whole_text)
-            st.success('Topic Generated.')
+        # with st.spinner("Finding Topics related to the Video......"):
+        #     suggest_topic(whole_text)
+        #     st.success('Topic Generated.')
             
     else:
         write(show_text)
         st.session_state.text_summ = a
     
-    st.subheader('Topics which is related to the Video Content ')
-    topics = st.session_state.video_info['keywords']
-    # st.write(", ".join(topics))
-    st.write(topics)
+    # st.subheader('Topics which is related to the Video Content ')
+    # topics = st.session_state.video_info['keywords']
+    # # st.write(", ".join(topics))
+    # st.write(topics)
 
     tabs = st.tabs(['Description','Name Entity Recognition - (NER)'])
     with tabs[0]:
