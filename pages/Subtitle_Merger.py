@@ -338,7 +338,8 @@ def install_img_magic_commands_linux():
           with open(destination_path, "w") as output_file:
               output_file.write(modified_content)
 
-
+          st.write(subprocess.run(["cat","~/.config/ImageMagick/policy.xml"], capture_output=True, text=True))
+          st.write(subprocess.run(["./magick -list policy"], capture_output=True, text=True))
       except subprocess.CalledProcessError as e:
           st.write(f"Error: {e}")
 
