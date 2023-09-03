@@ -23,15 +23,15 @@
 # # Optionally, display a message indicating the operation was successful
 # echo "Policy.xml file updated successfully!"
 
-cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g' > custom_policy.xml
+# cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g' > custom_policy.xml
 # cp custom_policy.xml  ~/.config/ImageMagick/policy.xml
-cat custom_policy.xml
+cat ~/.config/ImageMagick/policy.xml
 ./magick -list policy
 
 cat ~/.config/ImageMagick/policy.xml
-<policymap>
-    <policy domain="coder" rights="read|write" pattern="HTTP" />
-</policymap>
+# <policymap>
+#     <policy domain="coder" rights="read|write" pattern="HTTP" />
+# </policymap>
 
 # rpm -Uvh ImageMagick-7.1.1-15.x86_64.rpm
 # rpm -Uvh ImageMagick-libs-7.1.1-15.x86_64.rpm
