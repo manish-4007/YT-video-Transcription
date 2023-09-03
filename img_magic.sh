@@ -33,6 +33,6 @@ export MAGICK_HOME="$HOME/ImageMagick-7.1.1"
 export PATH="$MAGICK_HOME/bin:$PATH
 LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}$MAGICK_HOME/lib
 export LD_LIBRARY_PATH
-magick logo: logo.gif
-identify logo.gif
-display logo.gif
+# magick logo: logo.gif
+# identify logo.gif
+# display logo.gif
