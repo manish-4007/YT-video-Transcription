@@ -322,13 +322,25 @@ def install_img_magic_commands_linux():
           st.write(subprocess.run(['chmod', '+x', 'img_magic.sh'], check=True))
           st.write(f"File {shell_script_path} is now executable.")
 
-          st.write(subprocess.run(["./img_magic.sh"]))
+          # st.write(subprocess.run(["./img_magic.sh"]))
 
-          # # Check the return code for success or failure
-          # if subprocess.returncode == 0:
-          #     st.write("Script executed successfully!")
-          # else:
-          #     st.write("Script encountered an error.")
+          # with open('/etc/ImageMagick-6/policy.xml', "r") as file:
+          #     # Read the content of the file
+          #     file_content = file.read()
+          #     file.close
+          source_path = "/etc/ImageMagick-6/policy.xml"
+          destination_path = "~/.config/ImageMagick/policy.xml"
+
+          # Use the subprocess module to run the sed command
+          sed_command = f"cat {source_path} | sed 's/none/read,write/g' > {destination_path}"
+
+          # Execute the sed command in the shell
+          try:
+              subprocess.run(sed_command, shell=True, check=True)
+              print("Policy file edited and saved successfully.")
+          except subprocess.CalledProcessError as e:
+              print(f"Error: {e}")
+
       except subprocess.CalledProcessError as e:
           st.write(f"Error: {e}")
 
