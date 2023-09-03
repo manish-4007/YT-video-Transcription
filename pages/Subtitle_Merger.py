@@ -132,7 +132,7 @@ def split_text_into_lines(data,v_type):
 
 
 
-def create_caption(textJSON, framesize,v_type,font = "Helvetica",color='white', highlight_color='yellow',stroke_color='black',stroke_width=1.5):
+def create_caption(textJSON, framesize,v_type,font = "Arial",color='white', highlight_color='yellow',stroke_color='black',stroke_width=1.5):
     wordcount = len(textJSON['textcontents'])
     full_duration = textJSON['end']-textJSON['start']
 
@@ -259,11 +259,10 @@ def get_final_cliped_video(videofilename, linelevel_subtitles, v_type ):
 
     # Set the audio of the final video to be the same as the input video
     final_video = final_video.set_audio(input_video.audio)
-    st.write(destination, "Updated video")
     destination = os.path.join(directory,'output.mp4')
+    st.write(destination, "Updated video")  
     # Save the final clip as a video file with the audio included
-    final_video.write_videofile(destination, fps=24, codec="libx264", audio_codec="aac")  
-    
+    final_video.write_videofile(destination, fps=24, codec="libx264", audio_codec="aac") 
     return destination
 
 
@@ -285,7 +284,7 @@ def add_subtitle (videofilename, audiofilename, v_type):
   return outputfile
 
       
-def show_audio_video(audio,video):
+def show_audio_video(audiofilename,videofilename):
       tab1, tab2 = st.tabs(['Edited video','audio'])
       with tab1:
         st.video(videofilename)
@@ -337,6 +336,10 @@ def install_img_magic_commands_linux():
           # Write the modified content to the output file
           with open(destination_path, "w") as output_file:
               output_file.write(modified_content)
+          
+          with open(destination_path, "r") as input_file:
+              file_content = input_file.read()
+          st.write(file_content)
 
           st.write(subprocess.run(["cat","~/.config/ImageMagick/policy.xml"], capture_output=True, text=True))
           st.write(subprocess.run(["./magick -list policy"], capture_output=True, text=True))
@@ -458,7 +461,7 @@ if 'whisp_model' not in st.session_state:
   print("Downloading dependecies...")
 
   try:
-     install_img_magic_commands_linux()  
+    #  install_img_magic_commands_linux()  
      print("Dependencise for video editing downloaded successfully.")
      st.session_state.img_magik = True
   except Exception as e:
@@ -474,7 +477,8 @@ if 'whisp_model' not in st.session_state:
 col1,col2 = st.columns(2)
 with col1:
 
-  video_url = st.text_input('Enter Url Link')
+  video_url = st.text_input('Enter Url Link ')
+  st.write('( Remove the video below, if uploaded any video )')
   clip_sbtitle = st.button("Edit Video")
   
 with col2:
@@ -509,6 +513,9 @@ try:
     st.session_state.edit = False
 
   if video_file or video_url:
+      
+      if 'outputfile_path'  in st.session_state and st.session_state.outputfile_path is not None:
+        st.session_state.outputfile_path = None
     
       videofilename = st.session_state.videofile_path
       st.write("Title :", videofilename.split('\\')[-1])
@@ -552,17 +559,16 @@ try:
                   except Exception as e:
                       st.session_state.add_subtitles = True
                       outputfile = videofilename
-                      # st.write('There is an erro:',e)
+                      print('There is an erro:',e)
               else:
                   outputfile = videofilename
               st.session_state.outputfile_path = outputfile
               st.success('Video Created')
           except Exception as e:
              st.write('There is an error, please refresh the page or upload other video:',e)
-        
+
       if 'outputfile_path'  in st.session_state and st.session_state.outputfile_path is not None:
         show_audio_video(st.session_state.audio,st.session_state.outputfile_path)
-        st.session_state.outputfile_path = None
         
       if 'add_subtitles'  in st.session_state and st.session_state.add_subtitles is True:
         st.subheader('Generated Subtile for the video :')
