@@ -301,11 +301,11 @@ def install_img_magic_commands_linux():
 
     # Use subprocess to execute the shell script
       try:
-          print(subprocess.run(['chmod', '+x', './img_magic.sh'], check=True))
+          print(subprocess.run(['chmod', '+x', 'img_magic.sh'], check=True))
           print(f"File {shell_script_path} is now executable.")
 
 
-          print(subprocess.run(["./img_magic.sh"]))
+          print(subprocess.run(["img_magic.sh"]))
           source_path = "/etc/ImageMagick-6/policy.xml"
           destination_path = "~/.config/ImageMagick/policy.xml"
           destination_path = os.path.expanduser(destination_path)
