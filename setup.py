@@ -57,50 +57,101 @@ def intall_ffmpeg():
        print('Error :', e)
        print('Installing Unsucessful.')
 
-def imgmagick_env_setup_app():
+# def imgmagick_env_setup_app():
    
-    try: 
-        print('Setting up the imgmagick environment setup.....')
-        shell_script_path = "./img_magic.sh"
+#     try: 
+#         print('Setting up the imgmagick environment setup.....')
+#         shell_script_path = "./img_magic.sh"
+
+#     # Use subprocess to execute the shell script
+#         try:
+#             print(subprocess.run(['chmod', '+x', 'img_magic.sh'], check=True))
+#             print(f"File {shell_script_path} is now executable.")
+#             print(subprocess.run(["./img_magic.sh"]))
+
+#             print('adding custom policy.....')
+#             source_path = "/etc/ImageMagick-6/policy.xml"
+#             destination_path = "~/.config/ImageMagick/policy.xml"
+#             destination_path = os.path.expanduser(destination_path)
+                    
+#             # Read the content of the input file  
+#             with open(source_path, "r") as input_file:
+#                 file_content = input_file.read()
+
+#             modified_content = file_content.replace("none", "read,write")
+            
+#             # Write the modified content to the output file
+#             with open(destination_path, "w") as output_file:
+#                 output_file.write(modified_content)
+            
+#             with open(destination_path, "r") as input_file:
+#                 file_content = input_file.read()
+
+#             # st.write(subprocess.run(["cat","~/.config/ImageMagick/policy.xml"], capture_output=True, text=True))
+#             # st.write(subprocess.run(["magick", "-list", "policy"], capture_output=True, text=True))
+#             print('Checking all the policies which are in the environment.....')
+#             print(subprocess.run(["convert", "-list", "policy"], capture_output=True, text=True))
+#             print('Sucessful')
+#         except Exception as e:
+#             print(f"Error: {e}")
+#             print('Setup usucessfully')
+
+#     except Exception as e:
+#         print(e)
+#         print('Setup usucessfully')
+
+#     print('All Setup for the image-Magick is done sucessfully')
+
+def install_img_magic_commands_linux():
+   try: 
+      shell_script_path = "./img_magic.sh"
 
     # Use subprocess to execute the shell script
-        try:
-            print(subprocess.run(['chmod', '+x', 'img_magic.sh'], check=True))
-            print(f"File {shell_script_path} is now executable.")
-            print(subprocess.run(["./img_magic.sh"]))
+      try:
+          print(subprocess.run(['chmod', '+x', 'img_magic.sh'], check=True))
+          print(f"File {shell_script_path} is now executable.")
 
-            print('adding custom policy.....')
-            source_path = "/etc/ImageMagick-6/policy.xml"
-            destination_path = "~/.config/ImageMagick/policy.xml"
-            destination_path = os.path.expanduser(destination_path)
-                    
-            # Read the content of the input file  
-            with open(source_path, "r") as input_file:
-                file_content = input_file.read()
+          print(subprocess.run(['mkdir', '-p', '~/.config/ImageMagick'], check=True)) 
+          print("Directory Created .config/ImageMagick")
+          print(subprocess.run(['chmod', '+w', '~/.config/ImageMagick'], check=True)) 
+          print("permission give as write to .config/ImageMagick")
+          
+          # print(subprocess.run(["./img_magic.sh"]), capture_output=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+          source_path = "/etc/ImageMagick-6/policy.xml"
+          destination_path = "~/.config/ImageMagick/policy.xml"
+          destination_path = os.path.expanduser(destination_path)
+          
+          # Check if the destination directory exists, and create it if not
+          destination_dir = os.path.dirname(destination_path)
+          if not os.path.exists(destination_dir):
+              os.makedirs(destination_dir)
 
-            modified_content = file_content.replace("none", "read,write")
-            
-            # Write the modified content to the output file
-            with open(destination_path, "w") as output_file:
-                output_file.write(modified_content)
-            
-            with open(destination_path, "r") as input_file:
-                file_content = input_file.read()
+          # Read the content of the input file  
+          with open(source_path, "r") as input_file:
+              file_content = input_file.read()
 
-            # st.write(subprocess.run(["cat","~/.config/ImageMagick/policy.xml"], capture_output=True, text=True))
-            # st.write(subprocess.run(["magick", "-list", "policy"], capture_output=True, text=True))
-            print('Checking all the policies which are in the environment.....')
-            print(subprocess.run(["convert", "-list", "policy"], capture_output=True, text=True))
-            print('Sucessful')
-        except Exception as e:
-            print(f"Error: {e}")
-            print('Setup usucessfully')
+          modified_content = file_content.replace("none", "read,write")
+          print(modified_content)
+          # Write the modified content to the output file
+          with open(destination_path, "w+") as output_file:
+              output_file.write(modified_content)
+          print(output_file)
+          
+          with open(destination_path, "r") as input_file:
+              file_content = input_file.read()
+        
+          print(file_content)
+          # st.write(subprocess.run(["cat","~/.config/ImageMagick/policy.xml"] text=True))
+          # st.write(subprocess.run(["magick", "-list", "policy"], capture_output=True, text=True))
+          print(subprocess.run(["convert", "-list", "policy"], capture_output=True, text=True))
+          print('Sucessful')
+      except Exception as e:
+          print(f"Error: {e}")
+          print(e)
 
-    except Exception as e:
-        print(e)
-        print('Setup usucessfully')
+   except Exception as e:
+      print(e)
 
-    print('All Setup for the image-Magick is done sucessfully')
 
 setup(
     name = "YoutubeTranscription",
@@ -114,4 +165,4 @@ setup(
 print("Loading custom Dependencies from setup.py ")
 load_spacy()
 intall_ffmpeg()
-imgmagick_env_setup_app()
+install_img_magic_commands_linux()
