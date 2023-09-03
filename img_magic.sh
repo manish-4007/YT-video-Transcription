@@ -23,16 +23,17 @@
 # # Optionally, display a message indicating the operation was successful
 # echo "Policy.xml file updated successfully!"
 
+cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g' > ~/.config/ImageMagick/policy.xml
 
-rpm -Uvh ImageMagick-7.1.1-15.x86_64.rpm
-rpm -Uvh ImageMagick-libs-7.1.1-15.x86_64.rpm
-cd $HOME
-tar xvzf ImageMagick.tar.gz
-echo "Fetching Done"
-export MAGICK_HOME="$HOME/ImageMagick-7.1.1"
-export PATH="$MAGICK_HOME/bin:$PATH
-LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}$MAGICK_HOME/lib
-export LD_LIBRARY_PATH
+# rpm -Uvh ImageMagick-7.1.1-15.x86_64.rpm
+# rpm -Uvh ImageMagick-libs-7.1.1-15.x86_64.rpm
+# cd $HOME
+# tar xvzf ImageMagick.tar.gz
+# echo "Fetching Done"
+# export MAGICK_HOME="$HOME/ImageMagick-7.1.1"
+# export PATH="$MAGICK_HOME/bin:$PATH
+# LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}$MAGICK_HOME/lib
+# export LD_LIBRARY_PATH
 # magick logo: logo.gif
 # identify logo.gif
 # display logo.gif
