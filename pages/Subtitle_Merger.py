@@ -260,7 +260,6 @@ def get_final_cliped_video(videofilename, linelevel_subtitles, v_type ):
     # Set the audio of the final video to be the same as the input video
     final_video = final_video.set_audio(input_video.audio)
     destination = os.path.join(directory,'output.mp4')
-    st.write(destination, "Updated video")  
     # Save the final clip as a video file with the audio included
     final_video.write_videofile(destination, fps=24, codec="libx264", audio_codec="aac") 
     return destination
@@ -298,31 +297,15 @@ from getpass import getuser
 @st.cache_resource
 def install_img_magic_commands_linux():
    try: 
-      # # Run "apt install imagemagick"
-      # st.write(subprocess.run(["sudo", "apt", "install", "imagemagick"], capture_output=True, text=True))
-      # st.write("inagemagick installed successfully.")
-
-
-      # Run "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"
-      # st.write(subprocess.run(["sudo", "chmod", "a+rw", "/etc/sudoers"]))
-      # st.write(subprocess.run(
-      #    ["sudo", "sh", "-c", "cat /etc/ImageMagick-6/policy.xml | sed 's/none/read,write/g'> /etc/ImageMagick-6/policy.xml"],
-      #     capture_output=True,
-      #     text=True
-      # ))
-
-      import subprocess
-
-      # Define the path to your shell script
       shell_script_path = "./img_magic.sh"
 
     # Use subprocess to execute the shell script
       try:
-          st.write(subprocess.run(['chmod', '+x', 'img_magic.sh'], check=True))
-          st.write(f"File {shell_script_path} is now executable.")
+          print(subprocess.run(['chmod', '+x', 'img_magic.sh'], check=True))
+          print(f"File {shell_script_path} is now executable.")
 
 
-          st.write(subprocess.run(["./img_magic.sh"]))
+          print(subprocess.run(["./img_magic.sh"]))
           source_path = "/etc/ImageMagick-6/policy.xml"
           destination_path = "~/.config/ImageMagick/policy.xml"
           destination_path = os.path.expanduser(destination_path)
@@ -342,24 +325,11 @@ def install_img_magic_commands_linux():
 
           # st.write(subprocess.run(["cat","~/.config/ImageMagick/policy.xml"], capture_output=True, text=True))
           # st.write(subprocess.run(["magick", "-list", "policy"], capture_output=True, text=True))
-          st.write(subprocess.run(["convert", "-list", "policy"], capture_output=True, text=True))
-          st.write('Sucessful')
+          print(subprocess.run(["convert", "-list", "policy"], capture_output=True, text=True))
+          print('Sucessful')
       except Exception as e:
-          st.write(f"Error: {e}")
+          print(f"Error: {e}")
 
-
-
-        # # Define the command to edit the policy.xml file
-        # command = "sudo sed -i 's/none/read,write/g' /etc/ImageMagick-6/policy.xml"
-
-        # try:
-        #     # Run the command with elevated privileges
-        #     subprocess.run(command, shell=True, check=True)
-        #     print("Policy.xml file updated successfully.")
-        # except subprocess.CalledProcessError as e:
-        #     print(f"Error: {e}")
-
-      
    except Exception as e:
       st.write(e)
 
