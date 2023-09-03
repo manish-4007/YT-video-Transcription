@@ -27,7 +27,7 @@
 # cp custom_policy.xml  ~/.config/ImageMagick/policy.xml
 # cat custom_policy.xml
 
-mkdir -p /home/appuser/.config/ImageMagick
+mkdir -p ~/.config/ImageMagick/policy.xml
 # chmod +r /etc/ImageMagick-6/policy.xml
 # chmod +w /home/appuser/.config/ImageMagick/policy.xml
 
