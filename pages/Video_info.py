@@ -177,9 +177,9 @@ def show_text():
 def load_topic_transfomers():
     print('Loading the TOPIC Modelling Model into the App............')
     try:
-        topic_classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli",device="cuda", compute_type="float16")
+        topic_classifier = pipeline("zero-shot-classification",device="cuda")
     except Exception as e:
-        topic_classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
+        topic_classifier = pipeline("zero-shot-classification")
         print("Error: ", e)
 
     st.success("Loaded Topic Modeller!")
