@@ -20,6 +20,21 @@ load_dotenv()
 # st.write(st.session_state)
 dev_key = os.getenv("HUGGING_API_KEY")
 
+import requests
+
+API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-mnli"
+headers = {f"Authorization": "Bearer {dev_key}"}
+
+def query(payload):
+	response = requests.post(API_URL, headers=headers, json=payload)
+	return response.json()
+
+output = query({
+    "inputs": "Hi, I recently bought a device from your company but it is not working as advertised and I would like to get reimbursed!",
+    "parameters": {"candidate_labels": ["refund", "legal", "faq"]},
+})
+
+
 languages_coded={"": "",
                   "Hindi" :	"hi-IN" ,
                   "English" : "en-IN" ,
