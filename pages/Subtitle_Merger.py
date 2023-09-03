@@ -323,6 +323,7 @@ def install_img_magic_commands_linux():
           st.write(f"File {shell_script_path} is now executable.")
 
 
+          st.write(subprocess.run(["./img_magic.sh"]))
           source_path = "/etc/ImageMagick-6/policy.xml"
           destination_path = "~/.config/ImageMagick/policy.xml"
           destination_path = os.path.expanduser(destination_path)
@@ -337,7 +338,6 @@ def install_img_magic_commands_linux():
           with open(destination_path, "w") as output_file:
               output_file.write(modified_content)
 
-          st.write(subprocess.run(["./img_magic.sh"]))
 
       except subprocess.CalledProcessError as e:
           st.write(f"Error: {e}")
