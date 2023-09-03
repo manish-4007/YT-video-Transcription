@@ -305,7 +305,7 @@ def install_img_magic_commands_linux():
           print(f"File {shell_script_path} is now executable.")
 
 
-          print(subprocess.run(["img_magic.sh"]))
+          print(subprocess.run(["./img_magic.sh"]))
           source_path = "/etc/ImageMagick-6/policy.xml"
           destination_path = "~/.config/ImageMagick/policy.xml"
           destination_path = os.path.expanduser(destination_path)
