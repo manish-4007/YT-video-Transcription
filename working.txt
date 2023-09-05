@@ -1,16 +1,27 @@
+India Makes History! | Chandrayaan 3 Lunar Landing (Hindi- 18 min -> 25 min): 
+https://www.youtube.com/watch?v=aVj0BldnisY
+
 Titan Submarine Implosion(Hindi) : https://www.youtube.com/watch?v=flxhxXD4tfo
 Ubuntu Installation (HIndi) :  https://www.youtube.com/watch?v=kXzSQISqFS0
-India Makes History! | Chandrayaan 3 Lunar Landing (Hindi- 18 min -> 25 min): https://www.youtube.com/watch?v=aVj0BldnisY
 Every Indian Trip Ever(Hindi): https://www.youtube.com/watch?v=hrlXjYLzR2U
 
 I made Professional Maggi(Bengali) : https://www.youtube.com/watch?v=z4fdPwUc204
-
-Drone Pratap-Kalamadhyama(Kannada) : https://www.youtube.com/watch?v=5bLVOsFkx1o  (-- Important for Description and NLP, Topic Labelling and Text Extraction)
-
 ADIYAE review (Tamil) : https://www.youtube.com/watch?v=yHMsZJjsqE8
 
-best examples for our app
-Upcoming Mobile Phones (Telugu) : https://www.youtube.com/watch?v=TCuKW7thh8Y&pp=ygUUdGVsZWd1IG1vYmlsZSByZXZpZXc%3D
-Advice for ML (English) : https://www.youtube.com/watch?v=I2ZK3ngNvvI&pp=ygUYbWFjaGluZSBsZWFybmluZyBlbmdsaXNo
 
-NLP(English) : https://www.youtube.com/watch?v=vHw-V3x5Woo
+best examples for our app (NLP Summarize and Sentiment)
+
+Drone Pratap-Kalamadhyama(Kannada) : https://www.youtube.com/watch?v=5bLVOsFkx1o 
+(-- Important for Description and NLP, Topic Labelling and Text Extraction, also better analytics)
+
+How to use VS Code in an Android Phone : https://youtu.be/0L-OmTOeajU ('Neutral  and  Positive Tone)
+( good for NLP tasks, subtiltes and summarization, not showing analytics)
+
+Upcoming Mobile Phones (Telugu) : https://www.youtube.com/watch?v=TCuKW7thh8Y&pp=ygUUdGVsZWd1IG1vYmlsZSByZXZpZXc%3D
+('Neutral  and  Positive Tone, analytics: decent not so good,  Best for NLP tasks, subtiltes and summarization,NER)
+
+Advice for ML (English) : https://www.youtube.com/watch?v=I2ZK3ngNvvI&pp=ygUYbWFjaGluZSBsZWFybmluZyBlbmdsaXNo (positive and Neutral, avg analytics, bad summarization)
+
+reels : https://www.youtube.com/shorts/V-OLZIpxtXY?feature=share
+
+Pradip Nichite video : https://www.youtube.com/watch?v=vHw-V3x5Woo
