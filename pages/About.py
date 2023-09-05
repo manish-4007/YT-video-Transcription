@@ -1,4 +1,8 @@
 import streamlit as st 
 
-with open("README.md", 'r') as f:
-    st.markdown(f.read(), unsafe_allow_html=True)
+import glob
+import os 
+with open("README.md", 'r',encoding="utf8") as f:
+    readme_line = f.read()
+    
+st.markdown(readme_line,unsafe_allow_html=True)
