@@ -1,4 +1,4 @@
-![ubuntu installation](https://github.com/manish-4007/YT-video-Transcription/assets/57287611/0baa3843-43cd-4d32-906e-d5278fbd0d7d)<div align='center'>
+<div align='center'>
 
 <p align="center"><img src="https://socialify.git.ci/manish-4007/YT-video-Transcription/image?description=1&amp;descriptionEditable=This%20Web%20App%20is%20an%20AI-powered%20tool%20with%20a%20rich%20array%20of%20features%20designed%20to%20enhance%20the%20analysis%20of%20any%20video%20content.&amp;forks=1&amp;issues=1&amp;name=1&amp;owner=1&amp;pattern=Floating%20Cogs&amp;pulls=1&amp;stargazers=1&amp;theme=Auto" alt="project-image"></p>
 
