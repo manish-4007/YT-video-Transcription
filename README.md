@@ -5,7 +5,7 @@
 <h1>Video Transcriptor</h1>
 <p>This Web App is an AI tool packed with a wide array of capabilities designed to enhance the experience of interacting with YouTube videos YouTube Shots or any video content. It offers a versatile set of functionalities including transcription and scrolling subtitle embeddings. This versatile web app is a valuable resource for content creators researchers and anyone seeking to gain deeper insights into video content on YouTube or other platforms. Whether you need accurate transcriptions multi-language support sentiment analysis or enhanced accessibility through embedded subtitles into video with this tool. It also generates best description for the video and suggest the topics which are covered in the video.</p>
 
-<h4> <a href=https://video-transcription-m.streamlit.app/>View Demo</a> <span> · </span> <a href="https://github.com/manish-4007/YT-video-Transcription/blob/master/README.md"> Documentation </a> <span> · </span> <a href="https://github.com/manish-4007/YT-video-Transcription/issues"> Report Bug </a> <span> · </span> <a href="https://github.com/manish-4007/YT-video-Transcription/issues"> Request Feature </a> </h4>
+<h4> <a href=https://clipchamp.com/watch/bXpQ70xHVs6>About WebApp</a> <span> · </span> <a href=https://video-transcription-m.streamlit.app/> App Demo</a> <span> · </span> <a href="https://github.com/manish-4007/YT-video-Transcription/blob/master/README.md"> Documentation </a> <span> · </span> <a href="https://github.com/manish-4007/YT-video-Transcription/issues"> Report Bug </a> <span> · </span> <a href="https://github.com/manish-4007/YT-video-Transcription/issues"> Request Feature </a> </h4>
 
 
 </div>
@@ -22,8 +22,49 @@
 
 ## :star2: About the Project
 
+### :movie_camera: Video Tutorial
+
+
+#### Video Analayzer
+
+
+https://github.com/manish-4007/YT-video-Transcription/assets/57287611/26e27435-868d-4cfa-9d7f-bb9ee207eee5
+
+[Drone Pratap-Kalamadhyama ( Kannada ) ](https://www.youtube.com/embed/5bLVOsFkx1o)
+
+#### Video Transcription
+
+
+https://github.com/manish-4007/YT-video-Transcription/assets/57287611/0cd288eb-ab9d-4f11-9102-5c0bde557d30
+
+[Upcoming Mobile Phones: August 2023 ( Telugu ) ](https://www.youtube.com/embed/TCuKW7thh8Y)
+
+#### Subtitle Embedder
+
+https://github.com/manish-4007/YT-video-Transcription/assets/57287611/fe7f34db-a4f6-473e-98ea-b70a759b99ef
+
+- [RobMulla Youtube shorts](https://www.youtube.com/embed/V-OLZIpxtXY)
+- [My own Project Intro ( Trip Planner ) ](https://github.com/manish-4007/Trip-Planner)
+
+
+
+
 ### :camera: Screenshots
-<div align="center"> <a href="https://video-transcription-m.streamlit.app/"><img src="https://socialify.git.ci/manish-4007/YT-video-Transcription/image?description=1&descriptionEditable=This%20Web%20App%20is%20an%20AI-powered%20tool%20with%20a%20rich%20array%20of%20features%20designed%20to%20enhance%20the%20analysis%20of%20any%20video%20content.&forks=1&issues=1&name=1&owner=1&pattern=Floating%20Cogs&pulls=1&stargazers=1&theme=Auto" alt='image' width='800'/></a> </div>
+
+#### HomePage
+![Screenshot 2023-09-05 160251](https://github.com/manish-4007/YT-video-Transcription/assets/57287611/cd82ff02-36e1-42d1-b7a8-8301a7ca3ef8)
+
+
+#### Video Transcriptor
+
+- Subtitles Tranlsation on [Installing Ubuntu GUI Desktop on a Linux VPS on Linode  ( Code With Harry ) ](https://www.youtube.com/embed/kXzSQISqFS0)
+  
+![code with harry](https://github.com/manish-4007/YT-video-Transcription/assets/57287611/3d89b39b-94b1-48fc-8f3c-d1c75eeb716b)
+
+- Name Entity Recognition  on [India Makes History! - Chandrayaan 3 Lunar Landing ( Dhruv Rathee ) ](https://www.youtube.com/watch?v=aVj0BldnisY)
+  
+![Screenshot 2023-09-05 151354](https://github.com/manish-4007/YT-video-Transcription/assets/57287611/777fd4ff-75dc-41d3-8718-f643237bcc34)
+
 
 
 
