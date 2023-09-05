@@ -1,4 +1,4 @@
-<div align='center'>
+![ubuntu installation](https://github.com/manish-4007/YT-video-Transcription/assets/57287611/0baa3843-43cd-4d32-906e-d5278fbd0d7d)<div align='center'>
 
 <p align="center"><img src="https://socialify.git.ci/manish-4007/YT-video-Transcription/image?description=1&amp;descriptionEditable=This%20Web%20App%20is%20an%20AI-powered%20tool%20with%20a%20rich%20array%20of%20features%20designed%20to%20enhance%20the%20analysis%20of%20any%20video%20content.&amp;forks=1&amp;issues=1&amp;name=1&amp;owner=1&amp;pattern=Floating%20Cogs&amp;pulls=1&amp;stargazers=1&amp;theme=Auto" alt="project-image"></p>
 
@@ -25,7 +25,7 @@
 ### :movie_camera: Video Tutorial
 
 
-#### Video Analayzer
+#### Video Analyzer
 
 
 https://github.com/manish-4007/YT-video-Transcription/assets/57287611/26e27435-868d-4cfa-9d7f-bb9ee207eee5
@@ -58,9 +58,10 @@ https://github.com/manish-4007/YT-video-Transcription/assets/57287611/fe7f34db-a
 #### Video Transcriptor
 
 - Subtitles Tranlsation on [Installing Ubuntu GUI Desktop on a Linux VPS on Linode  ( Code With Harry ) ](https://www.youtube.com/embed/kXzSQISqFS0)
-  
-![code with harry](https://github.com/manish-4007/YT-video-Transcription/assets/57287611/3d89b39b-94b1-48fc-8f3c-d1c75eeb716b)
 
+![ubuntu installation](https://github.com/manish-4007/YT-video-Transcription/assets/57287611/69dc6e01-3e30-4d1b-93ce-1fb09fcb12d1)
+
+  
 - Name Entity Recognition  on [India Makes History! - Chandrayaan 3 Lunar Landing ( Dhruv Rathee ) ](https://www.youtube.com/watch?v=aVj0BldnisY)
   
 ![Screenshot 2023-09-05 151354](https://github.com/manish-4007/YT-video-Transcription/assets/57287611/777fd4ff-75dc-41d3-8718-f643237bcc34)
