@@ -168,7 +168,7 @@ lang_encode_trans = {
                     "Zulu" :	"zu",
 }
 
-@st.cache_resource
+# @st.cache_resource
 def check_nlp():
     if 'nlp' not in st.session_state: 
             
