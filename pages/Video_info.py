@@ -169,18 +169,18 @@ lang_encode_trans = {
 }
 
 # @st.cache_resource
-def check_nlp():
-    if 'nlp' not in st.session_state: 
+# def check_nlp():
+#     if 'nlp' not in st.session_state: 
             
-        nltk.download('stopwords')
-        nltk.download('punkt')
-        print('Creating nlp in session_state and loading it..............')
-        nlp = spacy.load("en_core_web_lg")
-        nlp.add_pipe('spacytextblob') 
-        st.session_state.nlp = nlp
-        print("NLP loaded from SpaCy in the transcription video info")
+#         nltk.download('stopwords')
+#         nltk.download('punkt')
+#         print('Creating nlp in session_state and loading it..............')
+#         nlp = spacy.load("en_core_web_lg")
+#         nlp.add_pipe('spacytextblob') 
+#         st.session_state.nlp = nlp
+#         print("NLP loaded from SpaCy in the transcription video info")
 
-check_nlp()
+# check_nlp()
 def show_text():
     for word in a.split():
         yield word + " "
