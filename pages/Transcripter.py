@@ -592,18 +592,20 @@ try:
         # nlp.add_pipe('spacytextblob')
         # st.session_state.nlp = nlp
         print("For Summarize  nltk dependencies loaded")
-        whole_text = st.session_state.subtiles_eng 
         
-        st.session_state.text_summ = summarize_option(whole_text) 
-        st.session_state.summary_show_done=False
-        try:
-            with st.spinner("Finding Topics related to the Video......"):
-                suggest_topic(whole_text) 
-                st.success('Topic Generated.')
-            st.session_state.topics = True
-        except Exception as e:
-            print(e)
-            st.session_state.topics = False
+        if 'subtiles_eng' in st.session_state:
+            whole_text = st.session_state.subtiles_eng 
+            
+            st.session_state.text_summ = summarize_option(whole_text) 
+            st.session_state.summary_show_done=False
+            try:
+                with st.spinner("Finding Topics related to the Video......"):
+                    suggest_topic(whole_text) 
+                    st.success('Topic Generated.')
+                st.session_state.topics = True
+            except Exception as e:
+                print(e)
+                st.session_state.topics = False
 
 
 except Exception as e:
