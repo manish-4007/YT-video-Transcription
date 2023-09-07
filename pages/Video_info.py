@@ -235,7 +235,7 @@ try:
             
     else:         
         write(show_text)
-        st.session_state.summary_done=True
+        st.session_state.summary_show_done=True
 
     if st.session_state.topics == True:
         if st.checkbox('Suggested Topics'):
