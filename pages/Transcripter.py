@@ -8,6 +8,7 @@ from streamlit_extras.streaming_write import write
 from streamlit_extras.stoggle import stoggle
 from streamlit_extras.grid import grid
 from src.video_analyzer import video_ratings,comment_analyzer,detect_sentiment
+from src.topic_suggestion import summarize_option
 
 import googleapiclient.discovery
 import googleapiclient.errors
@@ -553,7 +554,12 @@ try:
                 if key in dest_text_dict:
                     # st.write(f" {key} - [ {value[0]} - {value[1]} ]   :   {src_text_dict[key]}")
                     st.write(f" {key} - [ {value[0]} - {value[1]} ]   :   {st.session_state.transcribed_dest_dict[key]}")
+            
                     
+            whole_text = st.session_state.subtiles_eng 
+            st.session_state.text_summ = summarize_option(whole_text)
+            st.session_state.summary_done = False
+            
 
         subtiles = st.button("Click for the detailed infromation about the video and subtitles !")
         if subtiles:

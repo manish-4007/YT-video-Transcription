@@ -11,6 +11,7 @@ from spacy import displacy
 
 from src.youtube_audio import text_translator
 from src.video_analyzer import summarize
+from src.topic_suggestion import summarize_option,topic_suggest_option
 from transformers import pipeline
 
 
@@ -196,15 +197,17 @@ def show_text():
 #     result = topic_classifier(text, possible_topics)
 #     predicted_topic =result['labels'][:5]
 
-#     # Adding suggested keywords into existing keyword of a youtube video
-#     data = st.session_state.video_info
-#     a= data['keywords']
-#     predicted_topic.extend(a)
+def suggest_topic(text):
+    predicted_topic = topic_suggest_option(text)
+    st.session_state.topics = predicted_topic
+    # Adding suggested keywords into existing keyword of a youtube video
+    data = st.session_state.video_info
+    a= data['keywords']
+    predicted_topic.extend(a) 
 
-#     # Updating the keywords into the session state
-#     st.session_state.video_info['keywords'] = predicted_topic
-
-#     # return predicted_topic
+    # Updating the keywords into the session state
+    st.session_state.video_info['keywords'] = predicted_topic
+    # return predicted_topic
 
 
 
@@ -241,7 +244,7 @@ try:
         
         print('Creating nlp in session_state and loading it..............')
         nlp = spacy.load("en_core_web_lg")
-        nlp.add_pipe('spacytextblob')
+        nlp.add_pipe('spacytextblob') 
         st.session_state.nlp = nlp
         print("NLP loaded from SpaCy in the transcription video info")
 
@@ -267,25 +270,29 @@ try:
 
 
     whole_text = st.session_state.subtiles_eng 
-    a = summarize(whole_text)
+    a = st.session_state.text_summ
     # st.session_state.text_summ = summarize(whole_text)
 
 
-
-    if st.session_state.text_summ == a and st.session_state.text_summ is not None:
+    if st.session_state.summary_done ==True and st.session_state.text_summ is not None:
         st.write(a)
-        # with st.spinner("Finding Topics related to the Video......"):
-        #     suggest_topic(whole_text)
-        #     st.success('Topic Generated.')
             
     else:
         write(show_text)
-        st.session_state.text_summ = a
+        st.session_state.summary_done=True
+        
+        with st.spinner("Finding Topics related to the Video......"):
+            suggest_topic(whole_text) 
+            st.success('Topic Generated.')
+        # st.session_state.text_summ = a
     
-    # st.subheader('Topics which is related to the Video Content ')
-    # topics = st.session_state.video_info['keywords']
-    # # st.write(", ".join(topics))
-    # st.write(topics)
+    if st.checkbox('Show Topic'):
+        st.subheader('Topics suggestion related to the Video Content ')
+        topics = st.session_state.video_info['keywords']
+        top_cols = st.columns(2)
+        for i,topic in enumerate(topics):
+            with top_cols[i%2]:
+                st.markdown(topic)
 
     tabs = st.tabs(['Description','Name Entity Recognition - (NER)'])
     with tabs[0]:
@@ -346,8 +353,8 @@ try:
 except Exception as e:
     st.subheader("Some Error Occured😢, please select the video again😊")
     print("Error:", e)
-    if st.button("home"):
-        st.session_state.clear()
-        switch_page('Transcripter')
+    # if st.button("home"):
+    #     st.session_state.clear()
+    #     switch_page('Transcripter')
 
 show_hompage('trans_videoinf_reload_key','trans_videoinf_hm_key')
