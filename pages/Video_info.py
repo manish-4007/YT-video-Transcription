@@ -286,8 +286,8 @@ try:
             st.success('Topic Generated.')
         # st.session_state.text_summ = a
     
-    if st.checkbox('Show Topic'):
-        st.subheader('Topics suggestion related to the Video Content ')
+    if st.checkbox('Suggested Topics'):
+        st.subheader('Topic suggestions related to the Video Content ')
         topics = st.session_state.video_info['keywords']
         top_cols = st.columns(2)
         for i,topic in enumerate(topics):
