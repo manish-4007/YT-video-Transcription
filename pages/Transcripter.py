@@ -243,6 +243,15 @@ def show_hompage(key_1 ="reload",key_2 = 'Home'):
             st.session_state.clear()
             switch_page('Home')
         
+
+if 'nlp' not in st.session_state:
+    
+    print('Creating nlp in session_state and loading it..............')
+    nlp = spacy.load("en_core_web_lg")
+    nlp.add_pipe('spacytextblob') 
+    st.session_state.nlp = nlp
+    print("NLP loaded from SpaCy in the transcription video info")
+    
 show_hompage()
 
 
