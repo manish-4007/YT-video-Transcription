@@ -76,12 +76,12 @@ if 'topics' not in st.session_state:
     st.session_state.topics = None
 
 
-if 'nlp' not in st.session_state:
-    nltk.download('stopwords')
-    nltk.download('punkt')
-    # load_spacy_depend()
-    print('Creating nlp in session_state and loading it..............')
-    nlp = spacy.load("en_core_web_lg")
-    # nlp.add_pipe('spacytextblob')
-    st.session_state.nlp = nlp
-    print("NLP loaded from SpaCy in the transcription video info")
+# if 'nlp' not in st.session_state:
+#     nltk.download('stopwords')
+#     nltk.download('punkt')
+#     # load_spacy_depend()
+#     print('Creating nlp in session_state and loading it..............')
+#     nlp = spacy.load("en_core_web_lg")
+#     # nlp.add_pipe('spacytextblob')
+#     st.session_state.nlp = nlp
+#     print("NLP loaded from SpaCy in the transcription video info")
