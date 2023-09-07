@@ -177,59 +177,6 @@ def summarize(text):
   summary = " ".join(summary_sents)
   return summary
 
-def summarize_option(text):
-    
-    if len(summarize(text))>1500:
-      text = summarize(text)
-    try:
-        print('\ntrying with Bart summarizer')
-        output = query({
-            "inputs":text,
-        })
-        if type(output) == dict and 'error' in output.keys() :
-          print('\nPegasus Summarizer')
-          output = query({
-              "inputs": text[:10000],
-          },api="https://api-inference.huggingface.co/models/tuner007/pegasus_summarizer")
-          print(output,type(output))
-          
-          if type(output) == dict and 'error' in output.keys() :
-              print("\nsummaring my function")
-              return summarize(text)
-    except Exception as e:
-        print(e)
-        print('Normal summary')
-        return summarize(text)
-    return output[0]["summary_text"]    
-
-def topic_suggest_option(text):
-    
-    if st.session_state.text_summ is None:
-        text = summarize_option(text)
-        st.session_state.text_summ =  text     
-     
-    text = st.session_state.text_summ
-    result = topic_query({
-        "inputs": text,
-        "parameters": {
-            "candidate_labels": ['Business & Market & Finance & Economics', 'Health',  'Education & Science',
-                                 'Politics & Government','Travel & Tourism','Gadgets & Technology',
-                                 'Scientific Discovery & Space',"Fashion & Social Media, Law & Crime" ,
-                                 'Entertainment',"Environment,Development & Socialization"
-                                 ]},
-        
-    })
-    predicted_topic = result["labels"][:5]
-#  Adding suggested keywords into existing keyword of a youtube video
-    data = st.session_state.video_info
-    a= data['keywords']
-    predicted_topic.extend(a)
-    st.write(predicted_topic.keys()   )
-
-    # Updating the keywords into the session state
-    st.session_state.video_info['keywords'] = predicted_topic
-
-
 def main():
 
     st.header('Youtube Analyzer')
