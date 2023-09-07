@@ -33,22 +33,6 @@ def youtube_api_setup(dev_key):
 youtube = youtube_api_setup(dev_key)
 
 
-headers = {"Authorization": f"Bearer {HUGGING_FACE_TOKEN}"}
-API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
-# headers = {"Authorization": "Bearer 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"}
-
-API_TOPIC_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-mnli"
-
-def topic_query(payload):
-	topic_response = requests.post(API_TOPIC_URL, headers=headers, json=payload)
-	return topic_response.json()
-
-def query(payload, api= API_URL):
-	response = requests.post(api, headers=headers, json=payload)
-	return response.json()
-
-
-
  # Video ID of the YouTube video
 
 yt = YouTube("https://www.youtube.com/watch?v=2B0q2k5BTVo")

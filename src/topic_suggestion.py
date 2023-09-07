@@ -5,11 +5,10 @@ import string
 from heapq import nlargest
 import spacy
 from spacy import displacy
-from src.video_analyzer import summarize
+from src.video_analyzer import summarize,HUGGING_FACE_TOKEN
   
 import requests
 
-HUGGING_FACE_TOKEN="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"
 
 API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
 # API_URL = "https://api-inference.huggingface.co/models/tuner007/pegasus_summarizer"
