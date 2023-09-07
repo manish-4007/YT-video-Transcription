@@ -8,11 +8,11 @@ from streamlit_extras.streaming_write import write
 from streamlit_extras.stoggle import stoggle
 from streamlit_extras.grid import grid
 from src.video_analyzer import video_ratings,comment_analyzer,detect_sentiment
-from src.topic_suggestion import summarize_option
+from src.topic_suggestion import summarize_option,topic_suggest_option
 
 import googleapiclient.discovery
 import googleapiclient.errors
-import spacy
+import spacy,nltk
 
 dev_key = os.environ["DEVELOPER_KEY"]
 
@@ -242,7 +242,20 @@ def show_hompage(key_1 ="reload",key_2 = 'Home'):
         if st.button('🏠 Home Page', key= key_2):
             st.session_state.clear()
             switch_page('Home')
-        
+
+def suggest_topic(text):
+    predicted_topic = topic_suggest_option(text)
+    st.session_state.topics = predicted_topic
+    # Adding suggested keywords into existing keyword of a youtube video
+    data = st.session_state.video_info
+    a= data['keywords']
+    predicted_topic.extend(a) 
+
+    # Updating the keywords into the session state
+    st.session_state.video_info['keywords'] = predicted_topic
+    # return predicted_topic
+
+       
 
 if 'nlp' not in st.session_state:
     
@@ -569,6 +582,29 @@ try:
         if subtiles:
             switch_page("Video_info")
             st.experimental_rerun()
+
+
+    print('Summarizing  Video Content....')
+    if 'text_summ' not in  st.session_state:
+        nltk.download('stopwords')
+        nltk.download('punkt')
+        # nlp = spacy.load("en_core_web_lg")
+        # nlp.add_pipe('spacytextblob')
+        # st.session_state.nlp = nlp
+        print("For Summarize  nltk dependencies loaded")
+        whole_text = st.session_state.subtiles_eng 
+        
+        st.session_state.text_summ = summarize_option(whole_text) 
+        st.session_state.summary_show_done=False
+        try:
+            with st.spinner("Finding Topics related to the Video......"):
+                suggest_topic(whole_text) 
+                st.success('Topic Generated.')
+            st.session_state.topics = True
+        except Exception as e:
+            print(e)
+            st.session_state.topics = False
+
 
 except Exception as e:
     st.subheader("Some Error Occured😢, please select the video again😊")

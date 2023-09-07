@@ -186,19 +186,6 @@ def show_text():
         yield word + " "
         time.sleep(0.05)
 
-def suggest_topic(text):
-    predicted_topic = topic_suggest_option(text)
-    st.session_state.topics = predicted_topic
-    # Adding suggested keywords into existing keyword of a youtube video
-    data = st.session_state.video_info
-    a= data['keywords']
-    predicted_topic.extend(a) 
-
-    # Updating the keywords into the session state
-    st.session_state.video_info['keywords'] = predicted_topic
-    # return predicted_topic
-
-
 
 def show_hompage(key_1 ="reload",key_2 = 'Home'):
         
@@ -239,41 +226,26 @@ try:
     
     st.subheader(f"Generate Description from the Contnt of the video :  \n")
 
-    print('Summarizing  Video Content....')
-    if 'text_summ' not in  st.session_state:
-        nltk.download('stopwords')
-        nltk.download('punkt')
-        # nlp = spacy.load("en_core_web_lg")
-        # nlp.add_pipe('spacytextblob')
-        # st.session_state.nlp = nlp
-        print("For Summarize  nltk dependencies loaded")
-        st.session_state.text_summ = ""
-
-
+    
     whole_text = st.session_state.subtiles_eng 
-
-    if "summary_done" in st.session_state and st.session_state.summary_done is True:
-        a = st.session_state.text_summ          
+    a = st.session_state.text_summ  
+               
+    if st.session_state.summary_show_done is True:
         st.write(a)
             
     else:         
-        st.session_state.text_summ = summarize_option(whole_text)  
-        a = st.session_state.text_summ 
         write(show_text)
         st.session_state.summary_done=True
+
+    if st.session_state.topics == True:
+        if st.checkbox('Suggested Topics'):
+            st.subheader('Topic suggestions related to the Video Content ')
+            topics = st.session_state.video_info['keywords']
+            top_cols = st.columns(2)
+            for i,topic in enumerate(topics):
+                with top_cols[i%2]:
+                    st.markdown(topic)
         
-        with st.spinner("Finding Topics related to the Video......"):
-            suggest_topic(whole_text) 
-            st.success('Topic Generated.')
-        # st.session_state.text_summ = a
-    
-    if st.checkbox('Suggested Topics'):
-        st.subheader('Topic suggestions related to the Video Content ')
-        topics = st.session_state.video_info['keywords']
-        top_cols = st.columns(2)
-        for i,topic in enumerate(topics):
-            with top_cols[i%2]:
-                st.markdown(topic)
 
     tabs = st.tabs(['Description','Name Entity Recognition - (NER)'])
     with tabs[0]:
