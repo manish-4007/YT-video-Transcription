@@ -186,7 +186,6 @@ def show_text():
         yield word + " "
         time.sleep(0.05)
 
-
 def suggest_topic(text):
     predicted_topic = topic_suggest_option(text)
     st.session_state.topics = predicted_topic
@@ -198,6 +197,7 @@ def suggest_topic(text):
     # Updating the keywords into the session state
     st.session_state.video_info['keywords'] = predicted_topic
     # return predicted_topic
+
 
 
 def show_hompage(key_1 ="reload",key_2 = 'Home'):
@@ -251,14 +251,14 @@ try:
 
 
     whole_text = st.session_state.subtiles_eng 
-    a = st.session_state.text_summ
-    # st.session_state.text_summ = summarize(whole_text)
 
-
-    if st.session_state.summary_done ==True and st.session_state.text_summ is not None:
+    if "summary_done" in st.session_state and st.session_state.summary_done is True:
+        a = st.session_state.text_summ          
         st.write(a)
             
-    else:
+    else:         
+        st.session_state.text_summ = summarize_option(whole_text)  
+        a = st.session_state.text_summ 
         write(show_text)
         st.session_state.summary_done=True
         
